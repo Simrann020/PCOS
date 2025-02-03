@@ -1,0 +1,854 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+
+/* Landing Page */
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('assests/landing.jpg') no-repeat center center/cover;
+    background-size: cover;
+    text-align: center;
+    flex-direction: column;
+    color: #6a0572; /* Dark pastel purple */
+}
+
+/* Remove background box - Keep only text */
+.landing-container {
+    background: none; /* Remove the semi-transparent box */
+    padding: 20px;
+}
+
+/* Title Styling */
+.landing-container h1 {
+    font-size: 42px;
+    font-weight: bold;
+    color: #6a0572; /* Dark purple */
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8); /* Subtle glow effect */
+}
+
+/* Subtitle Styling */
+.landing-container p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #4a154b; /* Darker pastel text */
+    font-weight: 500;
+}
+
+/* Button Styling */
+.landing-container button {
+    padding: 14px 28px;
+    font-size: 20px;
+    color: white;
+    background: #d291bc; /* Pastel pink button */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.landing-container button:hover {
+    background: #b36a97;
+    transform: scale(1.1);
+}
+
+
+
+
+/* Index */
+
+/* General Styles */
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fff, #fde2e4); /* Soft pastel gradient */
+    color: #4a154b;
+}
+
+/* Header */
+header {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    color: #4a154b;
+    font-size: 24px;
+    font-weight: 600;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #4a154b;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out, transform 0.2s;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+nav ul li a:hover {
+    color: #ff7695;
+    background: rgba(255, 118, 149, 0.1);
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    background: url('../assets/landing.jpg') no-repeat center center/cover;
+    text-align: center;
+    color: #4a154b;
+    padding: 50px;
+}
+
+/* Hero Content */
+.hero-content {
+    background: rgba(255, 255, 255, 0.85); /* Softer transparency */
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+}
+
+.hero h2 {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #6a2c70;
+}
+
+/* Button Styling */
+.hero button {
+    padding: 14px 30px;
+    font-size: 18px;
+    background: #ff7695;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0px 5px 15px rgba(255, 118, 149, 0.3);
+}
+
+.hero button:hover {
+    background: #ff4f78;
+    transform: scale(1.1);
+}
+
+/* PCOS Importance Section */
+.why-pcos {
+    text-align: center;
+    padding: 50px 20px;
+    background: #fff;
+}
+
+.pcos-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pcos-card {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.pcos-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* PCOS Info Section */
+.pcos-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pcos-info img {
+    width: 40%;
+    border-radius: 8px;
+}
+
+.cta-button {
+    padding: 12px 20px;
+    font-size: 1em;
+    background: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #3700b3;
+}
+
+/* Project Impact Section */
+.project-impact {
+    background: #f3f3f3;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.project-impact ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-impact li {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+
+
+/* Content Section */
+.content {
+    padding: 60px;
+    text-align: center;
+}
+
+.content img {
+    width: 50%;
+    max-width: 500px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    color: #4a154b;
+    font-size: 16px;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.05);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+
+/* Introduction */
+
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fff, #fde2e4); /* Soft pastel gradient */
+    color: #4a154b;
+}
+
+/* Header */
+header {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    color: #4a154b;
+    font-size: 24px;
+    font-weight: 600;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #4a154b;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out, transform 0.2s;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #ff7695;
+    background: rgba(255, 118, 149, 0.1);
+    transform: scale(1.05);
+}
+
+/* Introduction Section */
+/* Content Section */
+.content {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Introduction Grid */
+.intro-grid {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.pcos-image {
+    width: 300px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.pcos-image:hover {
+    transform: scale(1.05);
+}
+
+/* Research Questions */
+.question-list {
+    padding-left: 20px;
+}
+
+.question-list li {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #8a2be2;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+
+/* EDA */
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fff, #fde2e4); /* Soft pastel gradient */
+    color: #4a154b;
+}
+
+/* Content Section */
+.content {
+    width: 80%;
+    margin: 50px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+/* Section Titles */
+.content h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #6a2c70;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styling */
+.content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4a154b;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* Code Block Styling */
+.code-container {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    overflow-x: auto;
+}
+
+/* Individual Code Boxes */
+.code-box {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.code-box h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #6a2c70;
+    margin-bottom: 10px;
+}
+
+.code-box pre {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #333;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}
+
+/* Button Styling */
+.toggle-button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #ff7695;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.toggle-button:hover {
+    background: #ff4f78;
+    transform: scale(1.05);
+}
+
+/* API Files List */
+.api-files {
+    text-align: left;
+    font-size: 18px;
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+
+.api-files li {
+    margin-bottom: 10px;
+}
+
+/* Image Styling */
+.pcos-image {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 30px auto;
+    border-radius: 15px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Dataset Grid */
+.dataset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Dataset Cards */
+.dataset-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.dataset-card:hover {
+    transform: scale(1.05);
+}
+
+/* Preview Button */
+.preview-button {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background: #ff7695;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.preview-button:hover {
+    background: #ff4f78;
+    transform: scale(1.05);
+}
+
+/* Dataset Grid */
+.dataset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Dataset Card */
+.dataset-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* View Full Dataset Button */
+.dataset-card button {
+    margin-left: 33%;
+    background: #ff7695;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dataset-card button:hover {
+    background: #ff4f78;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image inside Modal */
+/* Centering the Modal Content */
+.modal-content {
+    margin: auto;         /* Centers horizontally */
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+
+    /* Center vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+
+
+/* Merging */
+
+/* Merged Dataset Grid Layout */
+.merged-dataset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 25px;
+    padding: 30px 0;
+}
+
+/* Dataset Card Styling */
+.dataset-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+/* Hover Effect */
+.dataset-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Dataset Card Titles */
+.dataset-card h3 {
+    font-size: 20px;
+    color: #4a154b;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Icons Spacing */
+.dataset-card h3::before {
+    content: "📂";
+    margin-right: 8px;
+}
+
+/* Dataset Description */
+.dataset-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* View Code Button */
+.code-toggle {
+    background-color: #ff7695;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: block;
+    width: fit-content;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.code-toggle:hover {
+    background-color: #ff4f78;
+    transform: scale(1.05);
+}
+
+/* Code Block Styling */
+.code-block {
+    display: none;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: pre-wrap;
+    text-align: left;
+    overflow-x: auto;
+    border-left: 5px solid #ff7695;
+    font-family: 'Courier New', monospace;
+}
+
+/* View Merged Dataset Button */
+.view-button {
+    background-color: #ff7695;
+    color: white;
+    font-size: 18px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 0;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.view-button:hover {
+    background-color: #ff4f78;
+    transform: scale(1.05);
+}
+
+
+
+
+/*  */
+/* Section Styling */
+.content {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Grid Layout for Dataset Cards */
+.clean-dataset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Dataset Card Styling */
+.clean-dataset-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.clean-dataset-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings */
+.clean-dataset-card h3 {
+    font-size: 20px;
+    color: #4a154b;
+    margin-bottom: 10px;
+}
+
+/* Paragraph & List Styling */
+.clean-dataset-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.clean-dataset-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.clean-dataset-card ul li {
+    padding: 5px 0;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.clean-dataset-card ul li::before {
+    content: "✔"; 
+    color: #ff7695;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* View Dataset Button */
+.clean-view-button {
+    background-color: #ff7695;
+    color: white;
+    font-size: 18px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 0;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.clean-view-button:hover {
+    background: #ff4f78;
+    transform: scale(1.05);
+}
+
+
+
+
+/* Image Zoom Effect on Hover */
+.visualization-card img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.visualization-card img:hover {
+    transform: scale(1.7);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    color: #4a154b;
+    font-size: 16px;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.05);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 50px;
+}
+

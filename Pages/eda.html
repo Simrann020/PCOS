@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA - PCOS Data Analysis</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>PCOS Prediction & Analysis</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html" class="active">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="conclusion.html">Conclusions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- API Data Collection Section -->
+<!-- API Data Collection Section -->
+<section class="content">
+    <h2>Step 1: APIs Used for Data Collection</h2>
+    <p>
+        To collect data for PCOS analysis, we downloaded datasets from **Kaggle**. Below is the **code used** for downloading the datasets. Click the button to expand and view:
+    </p>
+
+    <!-- Button to Toggle Code -->
+    <button class="toggle-button" onclick="toggleCode()">Show API Download Code</button>
+
+    <!-- Hidden Code Section -->
+    <div id="code-section" class="code-container" style="display: none;">
+        
+        <!-- Installing Kaggle API -->
+        <div class="code-box">
+            <h3>📌 Install & Setup Kaggle API</h3>
+            <pre>
+!pip install kaggle
+!mkdir -p ~/.kaggle
+!mv ~/Downloads/kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
+            </pre>
+        </div>
+
+        <!-- Downloading Datasets -->
+        <div class="code-box">
+            <h3>📥 Downloading PCOS Datasets</h3>
+            <pre>
+!kaggle datasets download -d hasaanrana/diet-exercise-and-pcos-insights
+!kaggle datasets download -d shreyasvedpathak/pcos-dataset
+!kaggle datasets download -d ankushpanday1/pcos-prediction-datasettop-75-countries
+!kaggle datasets download -d sahilkoli04/pcos2023
+!kaggle datasets download -d ayamoheddine/pcos-dataset
+!kaggle datasets download -d prasadbobby/pcosdata
+!kaggle datasets download -d cm037divya/pcos-dataset
+            </pre>
+        </div>
+
+    </div>
+
+    <p>
+        The datasets downloaded help analyze **hormonal factors, infertility, and lifestyle effects on PCOS**. Below are the files obtained:
+    </p>
+</section>
+
+
+
+
+<section class="content">
+    <h2>📊 Collected PCOS Datasets</h2>
+    <p>The following datasets help analyze <strong>hormonal imbalances, infertility, lifestyle patterns, and clinical factors</strong> contributing to PCOS.</p>
+
+    <div class="dataset-grid">
+        <div class="dataset-card">
+            <h3>📜 PCOS Survey Insights</h3>
+            <p><strong>File:</strong> <i>CLEAN- PCOS SURVEY SPREADSHEET.csv</i></p>
+            <p>A survey-based dataset containing patient-reported PCOS symptoms and lifestyle factors.</p>
+            <button onclick="openDatasetModal('../assests/dataset1.png')">View Full Dataset</button>
+
+        </div>
+
+        <div class="dataset-card">
+            <h3>📊 Standardized PCOS Data</h3>
+            <p><strong>File:</strong> <i>Cleaned-Data.csv</i></p>
+            <p>A well-structured and standardized dataset containing cleaned patient records to ensure consistency and accuracy in PCOS analysis.</p>
+            <button onclick="openDatasetModal('../assests/dataset2.png')">View Full Dataset</button>
+        </div>
+
+        <div class="dataset-card">
+            <h3>🏥 Medical PCOS Records</h3>
+            <p><strong>File:</strong> <i>PCOS_data.csv</i></p>
+            <p>Comprehensive dataset containing medical records of patients diagnosed with PCOS.</p>
+            <button onclick="openDatasetModal('../assests/dataset3.png')">View Full Dataset</button>
+        </div>
+
+        <div class="dataset-card">
+            <h3>📈 Extended Dataset</h3>
+            <p><strong>File:</strong> <i>PCOS_extended_dataset.csv</i></p>
+            <p>An expanded dataset with additional variables and in-depth features for analysis.</p>
+            <button onclick="openDatasetModal('../assests/dataset4.png')">View Full Dataset</button>
+        </div>
+
+        <div class="dataset-card">
+            <h3>👶 PCOS & Infertility</h3>
+            <p><strong>File:</strong> <i>PCOS_infertility.csv</i></p>
+            <p>Infertility-related cases of PCOS with data on fertility treatments and outcomes.</p>
+            <button onclick="openDatasetModal('../assests/dataset5.png')">View Full Dataset</button>
+        </div>
+        <div class="dataset-card">
+            <h3>💊 FDA Reports on PCOS</h3>
+            <p><strong>File:</strong> <i>PCOS_OpenFDA.csv</i></p>
+            <p>FDA-sourced data focusing on treatments, medications, and their effectiveness for PCOS.</p>
+            <button onclick="openDatasetModal('../assests/dataset6.png')">View Full Dataset</button>
+        </div>
+
+        <div class="dataset-card">
+            <h3>🤖 Predictive Modeling Dataset</h3>
+            <p><strong>File:</strong> <i>pcos_prediction_dataset.csv</i></p>
+            <p>Dataset structured for machine learning models aimed at predicting PCOS diagnosis.</p>
+            <button onclick="openDatasetModal('../assests/dataset7.png')">View Full Dataset</button>
+        </div>
+    </div>
+</section>
+
+<!-- Dataset Image Modal -->
+<div id="datasetModal" class="modal">
+    <span class="close" onclick="closeDatasetModal()">&times;</span>
+    <img class="modal-content" id="datasetImage">
+</div>
+
+
+
+
+<section class="content">
+    <h2>Step 2: Merging the PCOS Datasets</h2>
+    <p>
+        The datasets collected were fragmented across **medical, lifestyle, medication, and demographic information**. 
+        To create a **comprehensive dataset**, we merged multiple datasets while ensuring **no data loss, consistency, and accuracy**.
+    </p>
+
+    <h3>📌 The Four Key Merged Datasets</h3>
+    <div class="merged-dataset-grid">
+
+        <div class="dataset-card">
+            <h3>🏥 Core PCOS Dataset</h3>
+            <p>Combines medical & clinical data, including **hormonal levels, infertility markers, and exercise patterns**.</p>
+            <button class="code-toggle" onclick="toggleCodeM('core')">View Merging Code</button>
+            <pre id="core-code" class="code-block">
+import pandas as pd
+pcos_data = pd.read_csv("PCOS_data.csv")
+pcos_extended = pd.read_csv("PCOS_extended_dataset.csv")
+pcos_infertility = pd.read_csv("PCOS_infertility.csv")
+core_pcos_df = pd.concat([pcos_data, pcos_extended, pcos_infertility], axis=0, ignore_index=True)
+core_pcos_df.drop_duplicates(subset=["Patient File No."], keep="first", inplace=True)
+core_pcos_df.to_csv("Core_PCOS_Dataset.csv", index=False)
+print("Core PCOS Dataset saved!")
+            </pre>
+        </div>
+
+        <div class="dataset-card">
+            <h3>🥗 Lifestyle & Diet Dataset</h3>
+            <p>Analyzes how **exercise, diet, weight gain, and menstrual irregularities** contribute to PCOS.</p>
+            <button class="code-toggle" onclick="toggleCodeM('lifestyle')">View Merging Code</button>
+            <pre id="lifestyle-code" class="code-block">
+pcos_survey_df = pd.read_csv("CLEAN- PCOS SURVEY SPREADSHEET.csv")
+cleaned_data_df = pd.read_csv("Cleaned-Data.csv")
+lifestyle_diet_df = pd.concat([pcos_survey_df, cleaned_data_df], axis=0, ignore_index=True)
+lifestyle_diet_df.drop_duplicates(subset=["Age (in Years)", "Weight (in Kg)", "Height (in Cm / Feet)"], keep="first", inplace=True)
+lifestyle_diet_df.to_csv("Lifestyle_Diet_Dataset.csv", index=False)
+print("Lifestyle & Diet Dataset saved!")
+            </pre>
+        </div>
+
+        <div class="dataset-card">
+            <h3>💊 PCOS Medication Dataset</h3>
+            <p>Focuses on **medications used for PCOS** and their reported side effects.</p>
+            <button class="code-toggle" onclick="toggleCodeM('medication')">View Merging Code</button>
+            <pre id="medication-code" class="code-block">
+pcos_medication_df = pd.read_csv("PCOS_OpenFDA.csv")
+pcos_medication_df.info()
+pcos_medication_df.head()
+            </pre>
+        </div>
+
+        <div class="dataset-card">
+            <h3>🌎 Global PCOS Demographics</h3>
+            <p>Explores **global trends, BMI variations, and fertility concerns** in different countries.</p>
+            <button class="code-toggle" onclick="toggleCodeM('demographics')">View Merging Code</button>
+            <pre id="demographics-code" class="code-block">
+global_pcos_df = pd.read_csv("pcos_prediction_dataset.csv")
+global_pcos_df.info()
+global_pcos_df.head()
+            </pre>
+        </div>
+
+    </div>
+
+   
+</section>
+
+<section class="content">
+    <h2>📊 Final Merged PCOS Datasets</h2>
+    <p>After merging the fragmented datasets, we obtained four comprehensive datasets for further analysis.</p>
+
+    <div class="merged-dataset-grid">
+
+        <!-- Core PCOS Dataset -->
+        <div class="dataset-card">
+            <h3>🏥 Core PCOS Dataset</h3>
+            <p>This dataset consolidates **medical and clinical** records of PCOS patients, including hormonal levels, infertility markers, and exercise patterns.</p>
+            <p><strong>Key Fields:</strong> Age, BMI, Hormonal Levels (FSH, LH, AMH), Follicle count, Pregnancy status, Blood group, and Exercise habits.</p>
+            <button onclick="openDatasetModal('../assests/Merged1.png')" class="view-button">View Core PCOS Dataset</button>
+        </div>
+
+        <!-- Lifestyle & Diet Dataset -->
+        <div class="dataset-card">
+            <h3>🥗 Lifestyle & Diet Dataset</h3>
+            <p>This dataset captures **lifestyle factors** like diet, exercise, and mental health, helping analyze how these contribute to PCOS symptoms.</p>
+            <p><strong>Key Fields:</strong> Exercise habits, Diet preferences, Family history, Fast food consumption, and Mental health indicators.</p>
+            <button onclick="openDatasetModal('../assests/Merged3.png')" class="view-button">View Lifestyle & Diet Dataset</button>
+        </div>
+
+        <!-- PCOS Medication Reactions Dataset -->
+        <div class="dataset-card">
+            <h3>💊 PCOS Medication & Reactions</h3>
+            <p>This dataset focuses on **medications used to treat PCOS** and the side effects experienced by patients.</p>
+            <p><strong>Key Fields:</strong> Medication names, Side effects, Age, and Gender.</p>
+            <button onclick="openDatasetModal('../assests/Merged4.png')" class="view-button">View Medication Dataset</button>
+        </div>
+
+        <!-- Global PCOS Demographics Dataset -->
+        <div class="dataset-card">
+            <h3>🌍 Global PCOS Demographics</h3>
+            <p>This dataset provides **global insights** into PCOS trends, including BMI categories, awareness levels, and fertility concerns across different countries.</p>
+            <p><strong>Key Fields:</strong> Country, Socioeconomic status, PCOS awareness, BMI category, Fertility concerns, Ethnicity.</p>
+            <button onclick="openDatasetModal('../assests/Merged2.png')" class="view-button">View Global PCOS Dataset</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- Dataset Image Modal -->
+<div id="datasetModal" class="modal">
+    <span class="close" onclick="closeDatasetModal()">&times;</span>
+    <img class="modal-content" id="datasetImage">
+</div>
+
+<section class="content">
+    <h2>Step 3: Cleaning the Merged Dataset</h2>
+    <div class="clean-dataset-grid">
+
+        <!-- Core PCOS Dataset Cleaning -->
+        <div class="clean-dataset-card">
+            <h3>🏥 Cleaning the Core PCOS Dataset</h3>
+            <p>
+                The Core PCOS Dataset contains medical and clinical information about patients. 
+                The following cleaning steps were applied:
+            </p>
+            <ul>
+                <li>Merged PCOS Data, PCOS Extended, and PCOS Infertility datasets.</li>
+                <li>Removed duplicate patient records using unique Patient File Numbers.</li>
+                <li>Filled missing values in BMI, Hormone Levels, and Follicle Count using median values.</li>
+                <li>Dropped unnecessary columns like "Unnamed: 44."</li>
+                <li>Converted hormonal markers (II beta-HCG and AMH) into numeric formats.</li>
+                <li>Performed outlier analysis and visualized attributes like BMI, FSH, LH, and Waist-to-Hip Ratio using boxplots.</li>
+            </ul>
+            <button class="clean-view-button" onclick="toggleCodeC('core-cleaning-code')">View Cleaning Code</button>
+            <pre id="core-cleaning-code" class="code-block">
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Merging Datasets
+core_pcos_df = pd.concat([pcos_data, pcos_extended, pcos_infertility], axis=0, ignore_index=True)
+
+# Removing Duplicates
+if "Patient File No." in core_pcos_df.columns:
+    core_pcos_df = core_pcos_df.drop_duplicates(subset=["Patient File No."], keep="first")
+
+# Handling Missing Values
+for col in core_pcos_df.select_dtypes(include=["float64", "int64"]).columns:
+    core_pcos_df[col].fillna(core_pcos_df[col].median(), inplace=True)
+
+# Dropping Unnecessary Columns
+if "Unnamed: 44" in core_pcos_df.columns:
+    core_pcos_df.drop(columns=["Unnamed: 44"], inplace=True)
+
+# Standardizing Numeric Columns
+for col in ["II beta-HCG(mIU/mL)", "AMH(ng/mL)"]:
+    if col in core_pcos_df.columns:
+        core_pcos_df[col] = pd.to_numeric(core_pcos_df[col], errors='coerce')
+
+# Outlier Detection and Visualization
+plt.figure(figsize=(15, 10))
+for i, col in enumerate(["BMI", "FSH(mIU/mL)", "LH(mIU/mL)", "TSH (mIU/L)", "PRL(ng/mL)"], 1):
+    plt.subplot(3, 4, i)
+    sns.boxplot(y=core_pcos_df[col])
+    plt.title(col)
+plt.tight_layout()
+plt.show()
+
+core_pcos_df.to_csv("Core_PCOS_Dataset_Cleaned.csv", index=False)
+print("Core PCOS Dataset cleaned and saved.")
+            </pre>
+            <button onclick="openDatasetModal('../assests/clean1.png')" class="clean-view-button">
+                View Cleaned Dataset
+            </button>
+        </div>
+
+        <!-- Lifestyle & Diet Dataset Cleaning -->
+        <div class="clean-dataset-card">
+            <h3>🥗 Cleaning Lifestyle & Diet Dataset</h3>
+            <p>
+                This dataset contains information on dietary habits, exercise routines, and menstrual irregularities in PCOS patients.
+            </p>
+            <ul>
+                <li>Removed redundant columns like Age, Weight, and Height.</li>
+                <li>Standardized column names by removing special characters.</li>
+                <li>Filled missing numerical values with the median.</li>
+                <li>Filled categorical values like Exercise Type, Mental Health, and Diet Preference with the most common category.</li>
+                <li>Converted categorical data like PCOS Diagnosis and Marital Status into proper formats.</li>
+            </ul>
+            <button class="clean-view-button" onclick="toggleCodeC('lifestyle-cleaning-code')">View Cleaning Code</button>
+            <pre id="lifestyle-cleaning-code" class="code-block">
+import pandas as pd
+
+# Dropping Duplicate or Irrelevant Columns
+columns_to_remove = ["Age", "Weight_kg", "Height_ft"]
+lifestyle_diet_df = lifestyle_diet_df.drop(columns=[col for col in columns_to_remove if col in lifestyle_diet_df.columns])
+
+# Standardizing Column Names
+lifestyle_diet_df.columns = [col.strip().replace("\n", " ").replace("?", "").replace("/", "_").replace("(", "").replace(")", "").replace("-", "_") for col in lifestyle_diet_df.columns]
+
+# Handling Missing Values
+for col in lifestyle_diet_df.select_dtypes(include=["float64", "int64"]).columns:
+    lifestyle_diet_df[col].fillna(lifestyle_diet_df[col].median(), inplace=True)
+
+for col in lifestyle_diet_df.select_dtypes(include=["object"]).columns:
+    lifestyle_diet_df[col].fillna(lifestyle_diet_df[col].mode()[0], inplace=True)
+
+lifestyle_diet_df.to_csv("Lifestyle_Diet_Dataset_Cleaned.csv", index=False)
+            </pre>
+            <button onclick="openDatasetModal('../assests/clean2.png')" class="clean-view-button">
+                View Cleaned Dataset
+            </button>
+        </div>
+
+        <!-- PCOS Medication Dataset Cleaning -->
+        <div class="clean-dataset-card">
+            <h3>💊 Cleaning PCOS Medication Dataset</h3>
+            <p>
+                This dataset focuses on PCOS medications and their reported side effects.
+            </p>
+            <ul>
+                <li>Removed unnecessary columns like "Age Unit."</li>
+                <li>Standardized column names for clarity (Drug Name, Age, Gender, Reactions).</li>
+                <li>Filled missing age values with the median.</li>
+                <li>Mapped gender values (1 → Male, 2 → Female).</li>
+            </ul>
+            <button class="clean-view-button" onclick="toggleCodeC('medication-cleaning-code')">View Cleaning Code</button>
+            <pre id="medication-cleaning-code" class="code-block">
+import pandas as pd
+
+# Dropping Unnecessary Columns
+pcos_medication_df.drop(columns=["Age Unit"], inplace=True)
+
+# Standardizing Column Names
+pcos_medication_df.columns = ["Drug_Name", "Age", "Gender", "Reaction"]
+
+# Handling Missing Values
+pcos_medication_df["Age"].fillna(pcos_medication_df["Age"].median(), inplace=True)
+
+# Converting Gender Column
+gender_map = {1: "Male", 2: "Female"}
+pcos_medication_df["Gender"] = pcos_medication_df["Gender"].map(gender_map)
+
+pcos_medication_df.to_csv("PCOS_Medication_Reactions_Cleaned.csv", index=False)
+            </pre>
+            <button onclick="openDatasetModal('../assests/clean3.png')" class="clean-view-button">
+                View Cleaned Dataset
+            </button>
+        </div>
+
+        <!-- Global PCOS Demographics Cleaning -->
+        <div class="clean-dataset-card">
+            <h3>🌍 Cleaning Global PCOS Demographics</h3>
+            <p>
+                This dataset contains demographic details such as BMI, stress levels, fertility concerns, and PCOS awareness.
+            </p>
+            <ul>
+                <li>Standardized column names.</li>
+                <li>Formatted categorical values for attributes like BMI Categories, Menstrual Regularity, and Ethnicity.</li>
+                <li>Converted numerical columns like Lifestyle Score to integer format.</li>
+            </ul>
+            <button class="clean-view-button" onclick="toggleCodeC('demographics-cleaning-code')">View Cleaning Code</button>
+            <pre id="demographics-cleaning-code" class="code-block">
+import pandas as pd
+
+# Standardizing Column Names
+global_pcos_df.columns = [col.strip().replace(" ", "_").replace("/", "_") for col in global_pcos_df.columns]
+
+# Formatting Categorical Values
+categorical_cols = ["BMI", "Menstrual_Regularity", "Hirsutism", "Acne_Severity", "Family_History_of_PCOS", "Insulin_Resistance"]
+for col in categorical_cols:
+    global_pcos_df[col] = global_pcos_df[col].astype(str).str.lower().str.strip()
+
+# Converting Numerical Columns
+global_pcos_df["Lifestyle_Score"] = global_pcos_df["Lifestyle_Score"].astype(int)
+global_pcos_df["Undiagnosed_PCOS_Likelihood"] = global_pcos_df["Undiagnosed_PCOS_Likelihood"].astype(float)
+
+global_pcos_df.to_csv("Global_PCOS_Demographics_Cleaned.csv", index=False)
+            </pre>
+            <button onclick="openDatasetModal('../assests/clean4.png')" class="clean-view-button">
+                View Cleaned Dataset
+            </button>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="content">
+    <h2>Step 4: Visualizing the PCOS Datasets</h2>
+    <p>Data visualization helps uncover patterns in PCOS-related symptoms, diagnosis, demographics, lifestyle, and medication use. Below are key visualizations for each dataset.</p>
+
+    <div class="visualization-grid">
+
+        <!-- Core PCOS Dataset Visualizations -->
+        <div class="visualization-card">
+            <h3>🏥 PCOS Diagnosis Distribution</h3>
+            <p>
+                This bar chart shows the **distribution of PCOS diagnoses** in the dataset. Understanding how many individuals are diagnosed versus those who are not helps in identifying prevalence rates in the sample.
+                The **darker shades represent a higher count of diagnoses**, making it easier to interpret.
+            </p>
+            <img src="../assests/vis1.png" alt="PCOS Diagnosis Distribution">
+            <button class="clean-view-button" onclick="toggleCodeV('pcos-distribution-code')">View Code</button>
+            <pre id="pcos-distribution-code" class="code-block">
+import plotly.express as px
+
+# Count of PCOS Diagnosis
+pcos_counts = core_pcos_df["PCOS (Y/N)"].value_counts()
+
+# Create interactive bar chart
+fig = px.bar(pcos_counts, 
+             x=pcos_counts.index, 
+             y=pcos_counts.values, 
+             title="PCOS Diagnosis Distribution",
+             labels={"x": "PCOS Status", "y": "Number of Patients"},
+             color=pcos_counts.values,
+             color_continuous_scale="Blues")
+
+# Show plot
+fig.show()
+            </pre>
+        </div>
+
+        <div class="visualization-card">
+            <h3>📊 Age Distribution in PCOS vs. Non-PCOS Patients</h3>
+            <p>
+                This histogram presents the **age distribution of patients diagnosed with PCOS versus non-PCOS patients**. The color coding allows for a clear differentiation between affected and unaffected individuals. 
+                This helps **identify if there is a common age range where PCOS is more prevalent**.
+            </p>
+            <img src="../assests/vis2.png" alt="Age Distribution in PCOS Patients">
+            <button class="clean-view-button" onclick="toggleCodeV('age-distribution-code')">View Code</button>
+            <pre id="age-distribution-code" class="code-block">
+import plotly.express as px
+
+# Create histogram
+fig = px.histogram(core_pcos_df, 
+                   x=" Age (yrs)", 
+                   color="PCOS (Y/N)", 
+                   title="Age Distribution in PCOS vs. Non-PCOS Patients",
+                   labels={" Age (yrs)": "Age (Years)"},
+                   nbins=15,
+                   color_discrete_sequence=["royalblue", "lightblue"])
+
+# Show plot
+fig.show()
+            </pre>
+        </div>
+
+        <div class="visualization-card">
+            <h3>⚕️ Symptom Prevalence in PCOS vs. Non-PCOS Patients</h3>
+            <p>
+                This horizontal bar chart shows **how common different symptoms are among PCOS and non-PCOS patients**. 
+                Symptoms such as **weight gain, hair loss, and pimples** appear more frequently in PCOS patients, providing insights into common indicators of the condition.
+            </p>
+            <img src="../assests/vis3.png" alt="Symptom Prevalence in PCOS">
+            <button class="clean-view-button" onclick="toggleCodeV('symptom-prevalence-code')">View Code</button>
+            <pre id="symptom-prevalence-code" class="code-block">
+import plotly.express as px
+
+# Selecting symptom columns
+symptom_cols = ["Weight gain(Y/N)", "hair growth(Y/N)", "Skin darkening (Y/N)", 
+                "Hair loss(Y/N)", "Pimples(Y/N)", "Fast food (Y/N)", "Reg.Exercise(Y/N)"]
+
+# Count symptoms in PCOS vs. Non-PCOS
+pcos_symptoms = core_pcos_df[core_pcos_df["PCOS (Y/N)"] == 1][symptom_cols].sum()
+non_pcos_symptoms = core_pcos_df[core_pcos_df["PCOS (Y/N)"] == 0][symptom_cols].sum()
+
+# Create horizontal bar chart
+fig = px.bar(x=[pcos_symptoms, non_pcos_symptoms], 
+             y=symptom_cols, 
+             orientation="h",
+             title="Symptom Prevalence in PCOS vs. Non-PCOS Patients",
+             labels={"x": "Number of Patients", "y": "Symptoms"},
+             color_discrete_sequence=["royalblue", "lightblue"])
+
+# Show plot
+fig.show()
+            </pre>
+        </div>
+
+        <div class="visualization-card">
+            <h3>💙 Systolic Blood Pressure in PCOS vs. Non-PCOS Patients</h3>
+            <p>
+                This histogram compares **systolic blood pressure (BP) levels** in PCOS versus non-PCOS individuals. Since **hypertension can be a comorbidity with PCOS**, 
+                this visualization explores whether there is a significant difference in BP readings between the two groups.
+            </p>
+            <img src="../assests/vis4.png" alt="Systolic BP in PCOS Patients">
+            <button class="clean-view-button" onclick="toggleCodeV('blood-pressure')">View Code</button>
+            <pre id="blood-pressure" class="code-block">
+                import plotly.express as px
+
+# Create histogram for Systolic BP
+fig = px.histogram(core_pcos_df, 
+                   x="BP _Systolic (mmHg)", 
+                   color="PCOS (Y/N)", 
+                   title="Systolic Blood Pressure in PCOS vs. Non-PCOS",
+                   labels={"BP _Systolic (mmHg)": "Systolic BP"},
+                   nbins=10,
+                   color_discrete_sequence=["darkblue", "lightblue"])
+
+fig.show()
+
+            </pre>
+        </div>
+
+        <!-- Global PCOS Demographics -->
+        <div class="visualization-card">
+            <h3>🌎 Top 10 Countries with Highest PCOS Diagnoses</h3>
+            <p>
+                This visualization presents **the 10 countries with the highest reported cases of PCOS**. Understanding regional prevalence helps with global health policies 
+                and awareness campaigns.
+            </p>
+            <img src="../assests/vis5.png" alt="Top 10 Countries with Highest PCOS Diagnoses">
+            <button class="clean-view-button" onclick="toggleCodeV('top-countries-code')">View Code</button>
+            <pre id="top-countries-code" class="code-block">
+import plotly.express as px
+
+# Top 10 Countries with Highest PCOS Diagnoses
+pcos_by_country_plotly = global_pcos_df[global_pcos_df["Diagnosis"] == "yes"]["Country"].value_counts().head(10).reset_index()
+pcos_by_country_plotly.columns = ["Country", "PCOS Cases"]
+
+# Create interactive bar chart
+fig = px.bar(pcos_by_country_plotly, x="Country", y="PCOS Cases",
+             title="Top 10 Countries with Highest PCOS Diagnoses",
+             labels={"PCOS Cases": "Number of PCOS Diagnoses"},
+             color="PCOS Cases", color_continuous_scale="blues")
+
+# Show plot
+fig.show()
+            </pre>
+        </div>
+
+        <div class="visualization-card">
+            <h3>📊 BMI Category vs. PCOS Diagnosis</h3>
+            <p>
+                This stacked bar chart examines the relationship between **BMI categories and PCOS diagnosis**. It helps understand **whether obesity or weight categories play a significant role in PCOS prevalence**.
+            </p>
+            <img src="../assests/vis6.png" alt="BMI vs PCOS Diagnosis">
+            <button class="clean-view-button" onclick="toggleCodeV('BMI')">View Code</button>
+            <pre id="BMI" class="code-block">
+                
+
+                # Count of PCOS Diagnoses by BMI Category
+                bmi_pcos_counts = global_pcos_df.groupby("BMI")["Diagnosis"].value_counts().unstack().reset_index()
+                bmi_pcos_counts.columns = ["BMI Category", "No PCOS", "PCOS"]
+                
+                # Create interactive stacked bar chart
+                fig = go.Figure()
+                
+                fig.add_trace(go.Bar(
+                    x=bmi_pcos_counts["BMI Category"],
+                    y=bmi_pcos_counts["No PCOS"],
+                    name="No PCOS", marker_color="skyblue"
+                ))
+                
+                fig.add_trace(go.Bar(
+                    x=bmi_pcos_counts["BMI Category"],
+                    y=bmi_pcos_counts["PCOS"],
+                    name="PCOS", marker_color="royalblue"
+                ))
+                
+                # Update layout
+                fig.update_layout(
+                    title="BMI Category vs. PCOS Diagnosis",
+                    xaxis_title="BMI Category",
+                    yaxis_title="Number of Patients",
+                    barmode="stack",
+                    template="plotly_white"
+                )
+                
+                # Show plot
+                fig.show()
+                
+
+            </pre>
+
+
+        </div>
+
+        <div class="visualization-card">
+            <h3>🩸 Menstrual Regularity vs. PCOS Diagnosis</h3>
+            <p>
+                This grouped bar chart shows the **distribution of menstrual regularity among PCOS and non-PCOS patients**. Since **irregular menstrual cycles** are a common symptom of PCOS, 
+                this visualization highlights the correlation between cycle irregularities and diagnosis.
+            </p>
+            <img src="../assests/vis7.png" alt="Menstrual Regularity vs PCOS">
+            <button class="clean-view-button" onclick="toggleCodeV('Menstrual')">View Code</button>
+            <pre id="Menstrual" class="code-block">
+                # Count of PCOS Diagnoses by Menstrual Regularity
+menstrual_pcos_counts = global_pcos_df.groupby("Menstrual_Regularity")["Diagnosis"].value_counts().unstack().reset_index()
+menstrual_pcos_counts.columns = ["Menstrual Regularity", "No PCOS", "PCOS"]
+
+# Create interactive grouped bar chart
+fig = go.Figure()
+
+fig.add_trace(go.Bar(
+    x=menstrual_pcos_counts["Menstrual Regularity"],
+    y=menstrual_pcos_counts["No PCOS"],
+    name="No PCOS", marker_color="skyblue"
+))
+
+fig.add_trace(go.Bar(
+    x=menstrual_pcos_counts["Menstrual Regularity"],
+    y=menstrual_pcos_counts["PCOS"],
+    name="PCOS", marker_color="royalblue"
+))
+
+# Update layout
+fig.update_layout(
+    title="Menstrual Regularity vs. PCOS Diagnosis",
+    xaxis_title="Menstrual Regularity",
+    yaxis_title="Number of Patients",
+    barmode="group",
+    template="plotly_white"
+)
+
+# Show plot
+fig.show()
+            </pre>
+        </div>
+
+        <!-- Lifestyle & Diet Dataset -->
+        <div class="visualization-card">
+            <h3>🥗 Dietary Habits Overview</h3>
+            <p>
+                This visualization provides an overview of **dietary habits** among PCOS patients. It categorizes food groups such as **fruits, vegetables, dairy, and fast food**, 
+                helping identify how diet might contribute to PCOS symptoms.
+            </p>
+            <img src="../assests/vis8.png" alt="Dietary Habits Overview">
+            <button class="clean-view-button" onclick="toggleCodeV('Diet')">View Code</button>
+            <pre id="Diet" class="code-block">
+                # Summing up consumption of different food categories
+diet_categories = [
+    "Diet_Bread_Cereals", "Diet_Milk_Products", "Diet_Fruits", "Diet_Vegetables",
+    "Diet_Starchy_Vegetables", "Diet_NonStarchy_Vegetables", "Diet_Fats",
+    "Diet_Sweets", "Diet_Fried_Food", "Diet_Tea_Coffee", "Diet_Multivitamin"
+]
+
+diet_sums = lifestyle_diet_df[diet_categories].sum().sort_values(ascending=False)
+
+# Create interactive bar chart using Plotly Graph Objects
+fig = go.Figure()
+
+fig.add_trace(go.Bar(
+    x=diet_sums.index,
+    y=diet_sums.values,
+    marker=dict(color="orange", opacity=0.7),
+    text=diet_sums.values,
+    textposition="outside"
+))
+
+# Update layout
+fig.update_layout(
+    title="Dietary Habits Overview",
+    xaxis_title="Food Categories",
+    yaxis_title="Total Consumption Count",
+    template="plotly_white"
+)
+
+# Show plot
+fig.show()
+            </pre>
+        </div>
+
+        <div class="visualization-card">
+            <h3>🏋️ Exercise Type vs. Diet Choices</h3>
+            <p>
+                This heatmap shows **how different exercise types influence dietary choices**. It is important to see whether patients who engage in regular exercise have healthier dietary habits, 
+                which may help in **PCOS symptom management**.
+            </p>
+            <img src="../assests/vis9.png" alt="Exercise vs Diet Choices">
+            <button class="clean-view-button" onclick="toggleCodeV('Excercise')">View Code</button>
+            <pre id="Excercise" class="code-block">
+                import pandas as pd
+import plotly.express as px
+
+# Selecting exercise type and diet categories
+diet_columns = [
+    "Diet_Bread_Cereals", "Diet_Milk_Products", "Diet_Fruits", "Diet_Vegetables",
+    "Diet_Starchy_Vegetables", "Diet_NonStarchy_Vegetables", "Diet_Fats",
+    "Diet_Sweets", "Diet_Fried_Food", "Diet_Tea_Coffee", "Diet_Multivitamin"
+]
+
+# Group by Exercise Type and get the average diet habits
+exercise_diet_avg = lifestyle_diet_df.groupby("Exercise_Type")[diet_columns].mean()
+
+# Create a heatmap
+fig = px.imshow(exercise_diet_avg,
+                labels=dict(x="Diet Choices", y="Exercise Type", color="Average Consumption"),
+                x=exercise_diet_avg.columns,
+                y=exercise_diet_avg.index,
+                color_continuous_scale="Viridis",
+                title="Impact of Exercise Type on Diet Choices")
+
+# Show plot
+fig.show()
+
+            </pre>
+        </div>
+
+        <!-- PCOS Medication Dataset -->
+        <div class="visualization-card">
+            <h3>💊 Most Common Medications for PCOS</h3>
+            <p>
+                This bar chart visualizes the **most commonly prescribed medications for PCOS treatment**. It helps understand which medications are most frequently used to manage symptoms and hormonal imbalances.
+            </p>
+            <img src="../assests/vis10.png" alt="Most Common PCOS Medications">
+            <button class="clean-view-button" onclick="toggleCodeV('Medication')">View Code</button>
+            <pre id="Medication" class="code-block">
+                import plotly.express as px
+
+# Count the occurrences of each drug
+drug_counts = pcos_med_df["Drug_Name"].value_counts()
+
+# Create interactive bar chart
+fig = px.bar(drug_counts,
+             x=drug_counts.index,
+             y=drug_counts.values,
+             title="Most Common Medications Used for PCOS",
+             labels={"x": "Drug Name", "y": "Number of Reports"},
+             color=drug_counts.values,
+             color_continuous_scale="Blues")
+
+# Show plot
+fig.show()
+
+            </pre>
+        </div>
+
+        <div class="visualization-card">
+            <h3>⚠️ Most Common Adverse Reactions to PCOS Medications</h3>
+            <p>
+                This bar chart displays the **most commonly reported side effects** from PCOS medications. This information is valuable in assessing the risk of treatment-related adverse reactions.
+            </p>
+            <img src="../assests/vis11.png" alt="PCOS Medication Reactions">
+            <button class="clean-view-button" onclick="toggleCodeV('Common-reaction')">View Code</button>
+            <pre id="Common-reaction" class="code-block">
+                import plotly.express as px
+
+# Count occurrences of each reaction
+reaction_counts = pcos_med_df["Reaction"].value_counts()
+
+# Create bar chart
+fig = px.bar(reaction_counts,
+             x=reaction_counts.index,
+             y=reaction_counts.values,
+             title="Most Common Adverse Reactions to PCOS Medications",
+             labels={"x": "Adverse Reaction", "y": "Number of Reports"},
+             color=reaction_counts.values,
+             color_continuous_scale="Reds")
+
+# Show plot
+fig.show()
+            </pre>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Machine Learning Project</p>
+    </footer>
+    <!-- JavaScript for Code Toggle -->
+<!-- JavaScript for Code Toggle -->
+<script>
+    function toggleCode() {
+        var codeBlock = document.getElementById("code-section");
+        var button = document.querySelector(".toggle-button");
+        if (codeBlock.style.display === "none") {
+            codeBlock.style.display = "block";
+            button.textContent = "Hide API Download Code";
+        } else {
+            codeBlock.style.display = "none";
+            button.textContent = "Show API Download Code";
+        }
+    }
+
+function openDatasetModal(imageSrc) {
+    let modal = document.getElementById("datasetModal");
+    let img = document.getElementById("datasetImage");
+
+    img.src = imageSrc; 
+    modal.style.display = "block";
+}
+
+function closeDatasetModal() {
+    document.getElementById("datasetModal").style.display = "none";
+}
+
+// Merging
+function toggleCodeM(sectionId) {
+    var codeBlock = document.getElementById(sectionId + "-code");
+    if (codeBlock.style.display === "none") {
+        codeBlock.style.display = "block";
+    } else {
+        codeBlock.style.display = "none";
+    }
+}
+
+function openDatasetModal(imageSrc) {
+    document.getElementById("datasetImage").src = imageSrc;
+    document.getElementById("datasetModal").style.display = "block";
+}
+
+
+function toggleCodeC(id) {
+        var codeBlock = document.getElementById(id);
+        codeBlock.style.display = codeBlock.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleCodeV(id) {
+        var codeBlock = document.getElementById(id);
+        codeBlock.style.display = codeBlock.style.display === "block" ? "none" : "block";
+    }
+
+</script>
+</body>
+</html>
