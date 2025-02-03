@@ -1,0 +1,51 @@
+Drug Name,Age,Age Unit,Gender,Reaction
+DEPAKOTE,41,801,1,Medication residue present
+TOFACITINIB CITRATE,66,801,2,Osteomyelitis
+METFORMIN,74,801,1,"Erysipelas, Sepsis"
+DEPAKOTE,,,1,"Balance disorder, Gait disturbance, Gait disturbance"
+DEPAKOTE,63,801,2,Weight increased
+JAKAFI,,,1,"Splenomegaly, Dyspnoea, Insomnia"
+XGEVA,,,2,"Metastases to bone, Osteonecrosis of jaw"
+AMITRIPTYLINE,,,2,"Feeling abnormal, Pneumonia, Suicidal ideation, Psychotic disorder, Unevaluable event, Unevaluable event, Malaise, Drug level increased, Asthenia, Apathy, Pain"
+JAKAFI,,,0,"Nausea, Vomiting, Abdominal pain upper, Fatigue, Haemoglobin decreased"
+JAKAFI,59,801,2,Epistaxis
+FEMARA,62,801,2,"Ocular hyperaemia, Eye pain, Dry eye, Chest discomfort"
+AMPYRA,46,801,1,"Convulsion, Alcohol detoxification, Loss of consciousness, Alcohol withdrawal syndrome, Renal failure acute, Dehydration, Joint injury, Tongue injury, Swollen tongue, Electrolyte imbalance, Dysarthria, Fall, Laceration, Gait disturbance, Headache, Drug ineffective"
+JAKAFI,58,801,2,"Rash, Headache"
+JAKAFI,67,801,1,"Thrombotic microangiopathy, Renal impairment, Hepatic failure, Mental status changes, Stem cell transplant, Graft versus host disease, Fatigue, Drug administration error"
+EFFEXOR XR,26,801,2,"Spinal disorder, Dizziness, Feeling abnormal"
+LYRICA,55,801,2,"Dry mouth, Dry eye"
+REVLIMID,61,801,2,Mental status changes
+SPIRIVA,,,2,"Hypoaesthesia, Vision blurred"
+GLIPIZIDE,,,1,Blood glucose abnormal
+LYRICA,66,801,2,"Spinal disorder, Off label use"
+JAKAFI,64,801,1,Diarrhoea
+LAMICTAL,47,801,2,"Transfusion, Liver disorder, Rash, Contusion, Urticaria"
+ASPIRIN.,60,801,2,Arteritis
+ATORVASTATIN,82,801,1,"Myalgia, Muscular weakness, Fall, Blood sodium decreased"
+METFORMIN HCL,,,2,"Cardiac disorder, Blood glucose increased"
+FOLLITROPIN ALFA,,,2,"Maternal exposure during pregnancy, Off label use, Abortion"
+METFORMIN HYDROCHLORIDE.,,,2,"Off label use, Abortion, Maternal exposure during pregnancy"
+FOLLITROPIN ALFA,,,2,"Maternal exposure during pregnancy, Off label use, Abortion"
+METFORMIN HYDROCHLORIDE.,,,2,"Maternal exposure during pregnancy, Off label use, Abortion"
+FOLLITROPIN ALFA,,,2,"Ectopic pregnancy, Maternal exposure during pregnancy, Off label use"
+BENICAR,53,801,2,Type 2 diabetes mellitus
+MCP,60,801,1,"Dyskinesia, Parkinsonism, Speech disorder, Tardive dyskinesia, Dyskinesia"
+BYSTOLIC,60,801,2,"Faecal incontinence, Neck surgery, Drug effect decreased, Abdominal pain, Diarrhoea, Cellulitis"
+"HUMALOG 50% LISPRO, 50% NPL",52,801,2,"Renal disorder, Oedema"
+COSOPT,,,2,Eye irritation
+TECFIDERA,66,801,2,"Gastrooesophageal reflux disease, Headache, Fatigue, Sinusitis, Urinary tract infection, Wound"
+SIMVASTATIN,59,801,1,"Cough, Sleep disorder, Muscular weakness, Hypoaesthesia, Paraesthesia, Fatigue, Myalgia"
+RANIBIZUMAB,,,2,"Lung neoplasm malignant, Metastases to heart, Metastasis"
+VICTOZA,52,801,2,"Drug interaction, Headache"
+HUMALOG LISPRO,76,801,1,"Atypical pneumonia, Hypoacusis"
+HIZENTRA,44,801,2,"Gastroenteritis Escherichia coli, Nausea, Vomiting, Diarrhoea, Bronchitis, Dyspnoea, Wheezing"
+ERLOTINIB TABLET,70,801,2,"Haemoptysis, Dyspnoea, Fatigue"
+ERLOTINIB TABLET,70,801,1,Death
+ERLOTINIB TABLET,,,1,"Blood disorder, Neoplasm malignant"
+ERLOTINIB TABLET,,,1,Dyspepsia
+ERLOTINIB TABLET,,,1,Death
+YAZ,44,801,2,Deep vein thrombosis
+VICTOZA,66,801,1,"Pancreatic carcinoma stage IV, Pancreatitis acute"
+BYETTA,62,801,2,Pancreatic carcinoma
+PRADAXA,65,801,1,"Paraesthesia oral, Ageusia, Dysgeusia, Tongue disorder, Glossodynia, Abdominal pain upper, Abdominal pain upper"
