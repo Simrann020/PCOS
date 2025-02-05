@@ -28,7 +28,7 @@
 <section class="content">
     <h2>Step 1: APIs Used for Data Collection</h2>
     <p>
-        To collect data for PCOS analysis, we downloaded datasets from **Kaggle**. Below is the **code used** for downloading the datasets. Click the button to expand and view:
+        To collect data for PCOS analysis, we downloaded datasets from Kaggle. Below is the code used for downloading the datasets. Click the button to expand and view:
     </p>
 
     <!-- Button to Toggle Code -->
@@ -65,7 +65,7 @@
     </div>
 
     <p>
-        The datasets downloaded help analyze **hormonal factors, infertility, and lifestyle effects on PCOS**. Below are the files obtained:
+        The datasets downloaded help analyze hormonal factors, infertility, and lifestyle effects on PCOS. Below are the files obtained:
     </p>
 </section>
 
@@ -140,8 +140,8 @@
 <section class="content">
     <h2>Step 2: Merging the PCOS Datasets</h2>
     <p>
-        The datasets collected were fragmented across **medical, lifestyle, medication, and demographic information**. 
-        To create a **comprehensive dataset**, we merged multiple datasets while ensuring **no data loss, consistency, and accuracy**.
+        The datasets collected were fragmented across medical, lifestyle, medication, and demographic information. 
+        To create a comprehensive dataset, we merged multiple datasets while ensuring no data loss, consistency, and accuracy.
     </p>
 
     <h3>📌 The Four Key Merged Datasets</h3>
@@ -149,7 +149,7 @@
 
         <div class="dataset-card">
             <h3>🏥 Core PCOS Dataset</h3>
-            <p>Combines medical & clinical data, including **hormonal levels, infertility markers, and exercise patterns**.</p>
+            <p>Combines medical & clinical data, including hormonal levels, infertility markers, and exercise patterns.</p>
             <button class="code-toggle" onclick="toggleCodeM('core')">View Merging Code</button>
             <pre id="core-code" class="code-block">
 import pandas as pd
@@ -165,7 +165,7 @@ print("Core PCOS Dataset saved!")
 
         <div class="dataset-card">
             <h3>🥗 Lifestyle & Diet Dataset</h3>
-            <p>Analyzes how **exercise, diet, weight gain, and menstrual irregularities** contribute to PCOS.</p>
+            <p>Analyzes how exercise, diet, weight gain, and menstrual irregularities contribute to PCOS.</p>
             <button class="code-toggle" onclick="toggleCodeM('lifestyle')">View Merging Code</button>
             <pre id="lifestyle-code" class="code-block">
 pcos_survey_df = pd.read_csv("CLEAN- PCOS SURVEY SPREADSHEET.csv")
@@ -179,7 +179,7 @@ print("Lifestyle & Diet Dataset saved!")
 
         <div class="dataset-card">
             <h3>💊 PCOS Medication Dataset</h3>
-            <p>Focuses on **medications used for PCOS** and their reported side effects.</p>
+            <p>Focuses on medications used for PCOS and their reported side effects.</p>
             <button class="code-toggle" onclick="toggleCodeM('medication')">View Merging Code</button>
             <pre id="medication-code" class="code-block">
 pcos_medication_df = pd.read_csv("PCOS_OpenFDA.csv")
@@ -190,7 +190,7 @@ pcos_medication_df.head()
 
         <div class="dataset-card">
             <h3>🌎 Global PCOS Demographics</h3>
-            <p>Explores **global trends, BMI variations, and fertility concerns** in different countries.</p>
+            <p>Explores global trends, BMI variations, and fertility concerns in different countries.</p>
             <button class="code-toggle" onclick="toggleCodeM('demographics')">View Merging Code</button>
             <pre id="demographics-code" class="code-block">
 global_pcos_df = pd.read_csv("pcos_prediction_dataset.csv")
@@ -213,7 +213,7 @@ global_pcos_df.head()
         <!-- Core PCOS Dataset -->
         <div class="dataset-card">
             <h3>🏥 Core PCOS Dataset</h3>
-            <p>This dataset consolidates **medical and clinical** records of PCOS patients, including hormonal levels, infertility markers, and exercise patterns.</p>
+            <p>This dataset consolidates medical and clinical records of PCOS patients, including hormonal levels, infertility markers, and exercise patterns.</p>
             <p><strong>Key Fields:</strong> Age, BMI, Hormonal Levels (FSH, LH, AMH), Follicle count, Pregnancy status, Blood group, and Exercise habits.</p>
             <button onclick="openDatasetModal('../assests/Merged1.png')" class="view-button">View Core PCOS Dataset</button>
         </div>
@@ -221,7 +221,7 @@ global_pcos_df.head()
         <!-- Lifestyle & Diet Dataset -->
         <div class="dataset-card">
             <h3>🥗 Lifestyle & Diet Dataset</h3>
-            <p>This dataset captures **lifestyle factors** like diet, exercise, and mental health, helping analyze how these contribute to PCOS symptoms.</p>
+            <p>This dataset captures lifestyle factors like diet, exercise, and mental health, helping analyze how these contribute to PCOS symptoms.</p>
             <p><strong>Key Fields:</strong> Exercise habits, Diet preferences, Family history, Fast food consumption, and Mental health indicators.</p>
             <button onclick="openDatasetModal('../assests/Merged3.png')" class="view-button">View Lifestyle & Diet Dataset</button>
         </div>
@@ -229,7 +229,7 @@ global_pcos_df.head()
         <!-- PCOS Medication Reactions Dataset -->
         <div class="dataset-card">
             <h3>💊 PCOS Medication & Reactions</h3>
-            <p>This dataset focuses on **medications used to treat PCOS** and the side effects experienced by patients.</p>
+            <p>This dataset focuses on medications used to treat PCOS and the side effects experienced by patients.</p>
             <p><strong>Key Fields:</strong> Medication names, Side effects, Age, and Gender.</p>
             <button onclick="openDatasetModal('../assests/Merged4.png')" class="view-button">View Medication Dataset</button>
         </div>
@@ -237,7 +237,7 @@ global_pcos_df.head()
         <!-- Global PCOS Demographics Dataset -->
         <div class="dataset-card">
             <h3>🌍 Global PCOS Demographics</h3>
-            <p>This dataset provides **global insights** into PCOS trends, including BMI categories, awareness levels, and fertility concerns across different countries.</p>
+            <p>This dataset provides global insights into PCOS trends, including BMI categories, awareness levels, and fertility concerns across different countries.</p>
             <p><strong>Key Fields:</strong> Country, Socioeconomic status, PCOS awareness, BMI category, Fertility concerns, Ethnicity.</p>
             <button onclick="openDatasetModal('../assests/Merged2.png')" class="view-button">View Global PCOS Dataset</button>
         </div>
@@ -436,8 +436,8 @@ global_pcos_df.to_csv("Global_PCOS_Demographics_Cleaned.csv", index=False)
         <div class="visualization-card">
             <h3>🏥 PCOS Diagnosis Distribution</h3>
             <p>
-                This bar chart shows the **distribution of PCOS diagnoses** in the dataset. Understanding how many individuals are diagnosed versus those who are not helps in identifying prevalence rates in the sample.
-                The **darker shades represent a higher count of diagnoses**, making it easier to interpret.
+                This bar chart shows the distribution of PCOS diagnoses in the dataset. Understanding how many individuals are diagnosed versus those who are not helps in identifying prevalence rates in the sample.
+                The darker shades represent a higher count of diagnoses, making it easier to interpret.
             </p>
             <img src="../assests/vis1.png" alt="PCOS Diagnosis Distribution">
             <button class="clean-view-button" onclick="toggleCodeV('pcos-distribution-code')">View Code</button>
@@ -464,8 +464,8 @@ fig.show()
         <div class="visualization-card">
             <h3>📊 Age Distribution in PCOS vs. Non-PCOS Patients</h3>
             <p>
-                This histogram presents the **age distribution of patients diagnosed with PCOS versus non-PCOS patients**. The color coding allows for a clear differentiation between affected and unaffected individuals. 
-                This helps **identify if there is a common age range where PCOS is more prevalent**.
+                This histogram presents the age distribution of patients diagnosed with PCOS versus non-PCOS patients. The color coding allows for a clear differentiation between affected and unaffected individuals. 
+                This helps identify if there is a common age range where PCOS is more prevalent.
             </p>
             <img src="../assests/vis2.png" alt="Age Distribution in PCOS Patients">
             <button class="clean-view-button" onclick="toggleCodeV('age-distribution-code')">View Code</button>
@@ -489,8 +489,8 @@ fig.show()
         <div class="visualization-card">
             <h3>⚕️ Symptom Prevalence in PCOS vs. Non-PCOS Patients</h3>
             <p>
-                This horizontal bar chart shows **how common different symptoms are among PCOS and non-PCOS patients**. 
-                Symptoms such as **weight gain, hair loss, and pimples** appear more frequently in PCOS patients, providing insights into common indicators of the condition.
+                This horizontal bar chart shows how common different symptoms are among PCOS and non-PCOS patients. 
+                Symptoms such as weight gain, hair loss, and pimples appear more frequently in PCOS patients, providing insights into common indicators of the condition.
             </p>
             <img src="../assests/vis3.png" alt="Symptom Prevalence in PCOS">
             <button class="clean-view-button" onclick="toggleCodeV('symptom-prevalence-code')">View Code</button>
@@ -521,7 +521,7 @@ fig.show()
         <div class="visualization-card">
             <h3>💙 Systolic Blood Pressure in PCOS vs. Non-PCOS Patients</h3>
             <p>
-                This histogram compares **systolic blood pressure (BP) levels** in PCOS versus non-PCOS individuals. Since **hypertension can be a comorbidity with PCOS**, 
+                This histogram compares systolic blood pressure (BP) levels in PCOS versus non-PCOS individuals. Since hypertension can be a comorbidity with PCOS, 
                 this visualization explores whether there is a significant difference in BP readings between the two groups.
             </p>
             <img src="../assests/vis4.png" alt="Systolic BP in PCOS Patients">
@@ -547,7 +547,7 @@ fig.show()
         <div class="visualization-card">
             <h3>🌎 Top 10 Countries with Highest PCOS Diagnoses</h3>
             <p>
-                This visualization presents **the 10 countries with the highest reported cases of PCOS**. Understanding regional prevalence helps with global health policies 
+                This visualization presents the 10 countries with the highest reported cases of PCOS. Understanding regional prevalence helps with global health policies 
                 and awareness campaigns.
             </p>
             <img src="../assests/vis5.png" alt="Top 10 Countries with Highest PCOS Diagnoses">
@@ -573,7 +573,7 @@ fig.show()
         <div class="visualization-card">
             <h3>📊 BMI Category vs. PCOS Diagnosis</h3>
             <p>
-                This stacked bar chart examines the relationship between **BMI categories and PCOS diagnosis**. It helps understand **whether obesity or weight categories play a significant role in PCOS prevalence**.
+                This stacked bar chart examines the relationship between BMI categories and PCOS diagnosis. It helps understand whether obesity or weight categories play a significant role in PCOS prevalence.
             </p>
             <img src="../assests/vis6.png" alt="BMI vs PCOS Diagnosis">
             <button class="clean-view-button" onclick="toggleCodeV('BMI')">View Code</button>
@@ -620,7 +620,7 @@ fig.show()
         <div class="visualization-card">
             <h3>🩸 Menstrual Regularity vs. PCOS Diagnosis</h3>
             <p>
-                This grouped bar chart shows the **distribution of menstrual regularity among PCOS and non-PCOS patients**. Since **irregular menstrual cycles** are a common symptom of PCOS, 
+                This grouped bar chart shows the distribution of menstrual regularity among PCOS and non-PCOS patients. Since irregular menstrual cycles are a common symptom of PCOS, 
                 this visualization highlights the correlation between cycle irregularities and diagnosis.
             </p>
             <img src="../assests/vis7.png" alt="Menstrual Regularity vs PCOS">
@@ -663,7 +663,7 @@ fig.show()
         <div class="visualization-card">
             <h3>🥗 Dietary Habits Overview</h3>
             <p>
-                This visualization provides an overview of **dietary habits** among PCOS patients. It categorizes food groups such as **fruits, vegetables, dairy, and fast food**, 
+                This visualization provides an overview of dietary habits among PCOS patients. It categorizes food groups such as fruits, vegetables, dairy, and fast food, 
                 helping identify how diet might contribute to PCOS symptoms.
             </p>
             <img src="../assests/vis8.png" alt="Dietary Habits Overview">
@@ -705,8 +705,8 @@ fig.show()
         <div class="visualization-card">
             <h3>🏋️ Exercise Type vs. Diet Choices</h3>
             <p>
-                This heatmap shows **how different exercise types influence dietary choices**. It is important to see whether patients who engage in regular exercise have healthier dietary habits, 
-                which may help in **PCOS symptom management**.
+                This heatmap shows how different exercise types influence dietary choices. It is important to see whether patients who engage in regular exercise have healthier dietary habits, 
+                which may help in PCOS symptom management.
             </p>
             <img src="../assests/vis9.png" alt="Exercise vs Diet Choices">
             <button class="clean-view-button" onclick="toggleCodeV('Excercise')">View Code</button>
@@ -742,7 +742,7 @@ fig.show()
         <div class="visualization-card">
             <h3>💊 Most Common Medications for PCOS</h3>
             <p>
-                This bar chart visualizes the **most commonly prescribed medications for PCOS treatment**. It helps understand which medications are most frequently used to manage symptoms and hormonal imbalances.
+                This bar chart visualizes the most commonly prescribed medications for PCOS treatment. It helps understand which medications are most frequently used to manage symptoms and hormonal imbalances.
             </p>
             <img src="../assests/vis10.png" alt="Most Common PCOS Medications">
             <button class="clean-view-button" onclick="toggleCodeV('Medication')">View Code</button>
@@ -770,7 +770,7 @@ fig.show()
         <div class="visualization-card">
             <h3>⚠️ Most Common Adverse Reactions to PCOS Medications</h3>
             <p>
-                This bar chart displays the **most commonly reported side effects** from PCOS medications. This information is valuable in assessing the risk of treatment-related adverse reactions.
+                This bar chart displays the most commonly reported side effects from PCOS medications. This information is valuable in assessing the risk of treatment-related adverse reactions.
             </p>
             <img src="../assests/vis11.png" alt="PCOS Medication Reactions">
             <button class="clean-view-button" onclick="toggleCodeV('Common-reaction')">View Code</button>
