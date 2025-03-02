@@ -336,7 +336,7 @@ nav ul li a.active {
 /* Introduction Section */
 /* Content Section */
 .content {
-    max-width: 1000px;
+    max-width: 2000px;
     margin: 30px auto;
     padding: 20px;
     background: white;
@@ -383,6 +383,49 @@ footer {
     padding: 10px 0;
     margin-top: 20px;
 }
+
+/* Styling for the research question section */
+.question-title {
+    text-align: left;
+    font-size: 28px;
+    font-weight: bold;
+    color: #4B0082;
+    margin-bottom: 10px;
+}
+
+.question-description {
+    text-align: left;
+    font-size: 18px;
+    color: #5A5A5A;
+    margin-bottom: 20px;
+}
+
+/* Ensures the list is left-aligned */
+.question-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+    background: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Improves the look of the list */
+.question-list {
+    padding-left: 30px;
+    list-style-type: decimal;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Adds spacing between list items */
+.question-list li {
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+
 
 
 /* EDA */
@@ -852,3 +895,385 @@ footer {
     margin-top: 50px;
 }
 
+
+
+
+/* Just Model */
+/* Models Page Styling */
+.models-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.model-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.model-card:hover {
+    transform: scale(1.05);
+}
+
+.model-card h3 {
+    font-size: 20px;
+    color: #4a154b;
+    margin-bottom: 10px;
+}
+
+.model-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.model-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #ff7695;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.model-btn:hover {
+    background-color: #ff4f78;
+}
+
+
+/* PCA */
+/* PCA Page Styling */
+/* PCA Page Styling */
+.pcos-image {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #ff7695;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.data-link:hover {
+    background-color: #ff4f78;
+}
+
+
+
+/* Clustering */
+
+
+/* Clustering Page Styling */
+.pcos-image {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #ff7695;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.data-link:hover {
+    background-color: #ff4f78;
+}
+
+/* Results Section */
+.content ul {
+    text-align: left;
+    list-style: none;
+    padding-left: 0;
+}
+
+.content ul li {
+    font-size: 18px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.comparison-table th {
+    background-color: #ff7695;
+    color: white;
+    font-weight: bold;
+}
+
+.comparison-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+
+/* Info Box Styling */
+
+/* Table Styling */
+.scrollable-table {
+    overflow-x: auto;
+}
+
+.scrollable-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.scrollable-table th, .scrollable-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.scrollable-table th {
+    background-color: #ff7695;
+    color: white;
+}
+
+/* PCA Image Styling */
+.pcos-image {
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.pcos-image:hover {
+    transform: scale(1.8);
+}
+
+
+
+
+/* Clustering Page Styling */
+.pcos-image {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #ff7695;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.data-link:hover {
+    background-color: #ff4f78;
+}
+
+/* Table Styling */
+.comparison-table, .silhouette-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.comparison-table th, .comparison-table td, .silhouette-table th, .silhouette-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.comparison-table th, .silhouette-table th {
+    background-color: #ff7695;
+    color: white;
+}
+
+
+.github-button {
+    background-color: #ff7695;
+    color: white;
+    font-size: 18px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 30px auto 20px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.github-button:hover {
+    background-color: #ff4f78;
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.github-button:active {
+    transform: translateY(1px);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.content {
+    text-align: center;
+}
+
+
+
+/* Clustering Results Section Styling */
+.clustering-results-container {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+/* Headings */
+.clustering-heading {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+}
+
+.clustering-subheading {
+    font-size: 20px;
+    color: #444;
+    margin-top: 20px;
+}
+
+/* Paragraph Text */
+.clustering-text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Table Styling */
+.clustering-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.clustering-table th, .clustering-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.clustering-table th {
+    background-color: #ff7695;
+    color: white;
+    font-weight: bold;
+}
+
+.clustering-table td {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Key Takeaways List */
+.clustering-list {
+    text-align: left;
+    max-width: 750px;
+    margin: 20px auto;
+}
+
+.clustering-list li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Clustering Image Styling */
+.clustering-image {
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.clustering-image:hover {
+    transform: scale(1.05);
+}
+
+/* GitHub Button */
+.clustering-github-button {
+    background-color: #ff7695;
+    color: white;
+    font-size: 18px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 30px auto 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.clustering-github-button:hover {
+    background-color: #ff4f78;
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCA - Principal Component Analysis</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Principal Component Analysis (PCA)</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="pca.html" class="active">PCA</a></li>
+                <li><a href="clustering.html">Clustering</a></li>
+                <li><a href="arm.html">ARM</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PCA Overview -->
+    <section class="content">
+        <h2>What is Principal Component Analysis (PCA)?</h2>
+        <p>
+            Principal Component Analysis (PCA) is a statistical technique used to reduce the dimensionality of large datasets while retaining the most important variance. By transforming correlated features into a new set of orthogonal (uncorrelated) variables called principal components, PCA simplifies data analysis and enhances model interpretability.
+        </p>
+
+        <h3>Why Use PCA in PCOS Prediction?</h3>
+        <p>
+            In the context of PCOS prediction, datasets often contain multiple features, some of which may be redundant or contribute little useful information. PCA helps in:
+        </p>
+        <ul>
+            <li>Reducing dimensionality, which improves computational efficiency.</li>
+            <li>Eliminating multicollinearity, leading to better machine learning performance.</li>
+            <li>Enhancing visualization, making it easier to explore patterns in the data.</li>
+        </ul>
+
+        <h3>Illustration of PCA Transformation</h3>
+<p>
+    Principal Component Analysis (PCA) transforms high-dimensional data into a new set of uncorrelated variables known as principal components. 
+    This transformation helps in reducing complexity while maintaining the most important information in the dataset. 
+</p>
+
+<p>
+    The first principal component (PC1) captures the maximum variance in the data, followed by the second principal component (PC2), and so on. 
+    These new components are linear combinations of the original features, arranged in decreasing order of importance.
+</p>
+
+<h3>Why is PCA Important?</h3>
+<div class="image-container">
+    <img src="../assests/pca.png" alt="PCA Concept" class="pcos-image" onclick="openImage(this)">
+    
+</div>
+<ul>
+
+    <li>PCA helps visualize patterns in data by projecting it into lower-dimensional spaces like 2D or 3D.</li>
+    <li>It removes redundancy and correlations among features, making models more efficient.</li>
+    <li>PCA reduces overfitting by selecting only the most informative components.</li>
+    <li>It improves computational performance by eliminating unnecessary dimensions.</li>
+</ul>
+
+
+
+<h3>Understanding Variance Explained</h3>
+<div class="image-container">
+    <img src="../assests//variance.png" alt="Variance Explained by PCA" class="pcos-image" onclick="openImage(this)">
+</div>
+
+<p>
+    The variance explained by each principal component indicates how much information from the original dataset is retained. 
+    The first few components typically capture most of the variance, allowing us to discard the rest without significant information loss.
+</p>
+
+<p>
+    The graph on the right shows how the variance accumulates across principal components. 
+    The elbow point on the curve suggests the optimal number of components to keep for analysis while maintaining the majority of the dataset’s information.
+</p>
+
+
+        <p>
+            The first few principal components capture most of the dataset's variance, allowing us to reduce the number of dimensions while preserving essential information.
+        </p>
+    </section>
+
+
+ 
+    <section class="content">
+        <h2>Access Full PCA Code on GitHub</h2>
+        <p>The complete PCA analysis, including dataset transformation and visualization, is available on GitHub.</p>
+        <a href="https://github.com/yourrepo/PCOS_PCA" target="_blank" class="github-button">View on GitHub</a>
+    </section>
+
+
+
+    <!-- Data Preparation -->
+    <section class="content">
+        <h2>Data Preparation for PCA</h2>
+        <p>We selected four PCOS-related datasets and preprocessed them to retain only numerical features.</p>
+        
+        <h3>1️⃣ Core PCOS Dataset</h3>
+        <img src="../assests/clean1.png" alt="Core PCOS Dataset Preview" class="pcos-image">
+        <p>This dataset contains core clinical and hormonal measurements, providing foundational data for understanding PCOS characteristics.</p>
+        
+        <h3>2️⃣ Lifestyle & Diet Dataset</h3>
+        <img src="../assests/clean2.png" alt="Lifestyle & Diet Dataset Preview" class="pcos-image">
+        <p>This dataset captures information on lifestyle habits and dietary patterns, including exercise frequency and fast food consumption.</p>
+        
+        <h3>3️⃣ PCOS Medication Reactions</h3>
+        <img src="../assests/clean3.png" alt="PCOS Medication Reactions Preview" class="pcos-image">
+        <p>A collection of patient responses to various PCOS-related medications, highlighting side effects and treatment effectiveness.</p>
+        
+        <h3>4️⃣ Global PCOS Demographics</h3>
+        <img src="../assests/clean3.png" alt="Global PCOS Demographics Preview" class="pcos-image">
+        <p>A diverse dataset with demographic details such as location, ethnicity, and socio-economic factors, offering a global view of PCOS prevalence.</p>
+    
+        
+    </section>
+    
+
+
+
+    <!-- PCA Implementation -->
+<!-- PCA Implementation -->
+<section class="content">
+    <h2>PCA Implementation & Results</h2>
+    <p>Principal Component Analysis (PCA) was applied to several PCOS-related datasets to reduce dimensionality and explore patterns in the data. Below are the results of 2D and 3D PCA projections:</p>
+
+        <h2>Data Preparation for PCA</h2>
+        <p>We selected four PCOS-related datasets and preprocessed them to retain only numerical features.</p>
+        
+        <h3>1️⃣ Core PCOS Dataset</h3>
+        <div class="image-container">
+            <p>Before PCA: The dataset contained original numerical values from clinical and hormonal features.</p>
+            <img src="../assests/Core_Before_Pca.png" alt="Core PCOS Dataset Before PCA" class="pcos-image" onclick="openImage(this)">
+            <p>After PCA: Reduced to the most influential principal components while preserving key variance.</p>
+            <img src="../assests/Core_After_Pca.png" alt="Core PCOS Dataset After PCA" class="pcos-image" onclick="openImage(this)">
+        </div>
+        
+        
+
+        <h3>2D PCA Projection - Core PCOS Dataset</h3>
+    <img src="../assests/PCA_CORE_2D.png" alt="PCA 2D Projection" class="pcos-image">
+    <p><strong>Explained Variance (2D):</strong> 66.91%</p>
+    <p>The 2D projection of the Core PCOS Dataset captures a significant portion of the variance, revealing key patterns in the data while maintaining simplicity in visualization.</p>
+
+    <h3>3D PCA Projection - Core PCOS Dataset</h3>
+    <img src="../assests/PCA_CORE_3D.png" alt="PCA 3D Projection" class="pcos-image">
+    <p><strong>Explained Variance (3D):</strong> 100%</p>
+    <p>The 3D projection offers a more comprehensive view, retaining all the variance in three principal components.</p>
+        
+       
+    
+
+</section>
+
+<section class="content">
+    <h3>2️⃣ Lifestyle & Diet Dataset</h3>
+    <div class="image-container">
+        <p>Before PCA: Included multiple lifestyle attributes like diet, physical activity, and sleep patterns.</p>
+        <img src="../assests/Lifestyle_before_Pca.png" alt="Lifestyle & Diet Dataset Before PCA" class="pcos-image" onclick="openImage(this)">
+        <p>After PCA: Transformed into a reduced set of components capturing primary lifestyle influences.</p>
+        <img src="../assests/Lifestyle_after_Pca.png" alt="Lifestyle & Diet Dataset After PCA" class="pcos-image" onclick="openImage(this)">
+    </div>
+   
+   
+
+
+    <h3>2D PCA Projection - Lifestyle & Diet Dataset</h3>
+    <img src="../assests/PCA_Lifestyle_2D.png" alt="PCA 2D Lifestyle Dataset" class="pcos-image">
+    <p><strong>Explained Variance (2D):</strong> 29.26%</p>
+    <p>The Lifestyle & Diet Dataset exhibits less explained variance in 2D. This is likely due to the more diverse and less correlated nature of the features in this dataset.</p>
+
+    <h3>3D PCA Projection - Lifestyle & Diet Dataset</h3>
+    <img src="../assests/PCA_Lifestyle_3D.png" alt="PCA 3D Lifestyle Dataset" class="pcos-image">
+    <p><strong>Explained Variance (3D):</strong> 38.12%</p>
+    <p><strong>Components Needed for 95% Variance:</strong> 14</p>
+    <p>The 3D projection of the Lifestyle & Diet Dataset highlights more variance than the 2D projection, though it still requires multiple components to fully explain the dataset's complexity.</p>
+
+</section>
+
+<section class="content">
+    <h3>3️⃣Global PCOS Demographics</h3>
+        <div class="image-container">
+            <p>Before PCA: Contained various demographic factors such as age, ethnicity, and socioeconomic status.</p>
+            <img src="../assests/Global_before_PCA.png" alt="Global PCOS Demographics Before PCA" class="pcos-image" onclick="openImage(this)">
+            <p>After PCA: Reduced to a few principal components representing the most important demographic trends.</p>
+            <img src="../assests/Global_after_PCA.png" alt="Global PCOS Demographics After PCA" class="pcos-image" onclick="openImage(this)">
+        </div>
+
+    <h3>2D PCA Projection - Global PCOS Demographics</h3>
+    <img src="../assests/PCA_Global_2D.png" alt="PCA 2D Global Dataset" class="pcos-image">
+    <p><strong>Explained Variance (2D):</strong> 66.92%</p>
+    <p>The 2D projection of the Global PCOS Demographics dataset highlights the most influential features in just two components, offering a straightforward view of variance distribution.</p>
+
+    <h3>3D PCA Projection - Global PCOS Demographics</h3>
+    <img src="../assests/PCA_Global_3D.png" alt="PCA 3D Projection" class="pcos-image">
+    <p><strong>Explained Variance (3D):</strong> 100%</p>
+    <p><strong>Components Needed for 95% Variance:</strong> 3</p>
+    <p>The Global PCOS Demographics Dataset required three principal components to reach 95% of the explained variance, reflecting the complexity and variability in demographic factors.</p>
+
+
+        
+
+</section>
+<section class="content">
+    <h3>4️⃣ PCOS Medication Reactions</h3>
+
+    <h3>PCA on PCOS Medication Reactions</h3>
+    <p><strong>Note:</strong> PCA could not be applied to the PCOS Medication Reactions dataset. This is because the dataset primarily contains categorical data, which PCA, a linear method for continuous variables, is not suited to handle directly.</p>
+
+
+</section>
+
+
+    <!-- Eigenvalues & Variance Retention -->
+    <section class="content">
+        <h2>Eigenvalues & Variance Retention</h2>
+        <p>To understand how well PCA captures the variability in the dataset, we analyzed the eigenvalues and the variance explained by each principal component.</p>
+    
+        <h3>Explained Variance by Principal Components</h3>
+        <p>The table below shows the percentage of variance retained when reducing the dataset to two and three principal components.</p>
+        <div class="image-container">
+            <img src="../assests/PCA_Variance.png" alt="PCA Explained Variance" class="pcos-image" onclick="openImage(this)">
+        </div>
+    
+        <ul>
+            <li>The Global PCOS Demographics dataset retains 66.92% of its variance in 2D and 100% in 3D.</li>
+            <li>The Lifestyle & Diet Dataset retains 29.26% in 2D and 38.12% in 3D, indicating a more diverse feature set.</li>
+            <li>The Core PCOS Dataset retains 19.75% in 2D and 26.11% in 3D, requiring more components to preserve key information.</li>
+        </ul>
+        <p>This analysis confirms that the Global PCOS Demographics dataset benefits most from PCA, while other datasets require additional components to retain meaningful variance.</p>
+    
+        <h3>Top Eigenvalues</h3>
+        <p>Eigenvalues represent the amount of variance captured by each principal component. The higher the eigenvalue, the more significant that component is in explaining the dataset’s variance.</p>
+    
+        <div class="image-container">
+            <img src="../assests/PCA_Eigen.png" alt="PCA Eigenvalues" class="pcos-image" onclick="openImage(this)">
+        </div>
+    
+        <ul>
+            <li>For Global PCOS Demographics, the first three eigenvalues are approximately 1.007, 0.999, and 0.992, showing a gradual decline in importance.</li>
+            <li>The Lifestyle & Diet Dataset's top three eigenvalues are 2.88, 1.80, and 1.42, reflecting moderate information retention.</li>
+            <li>The Core PCOS Dataset has eigenvalues of 5.25, 3.44, and 2.80, indicating that its first few components are highly significant.</li>
+        </ul>
+    
+        <p>These eigenvalues validate our earlier findings: datasets with a smaller spread of eigenvalues (like Global PCOS Demographics) are more effectively compressed into fewer dimensions, while others may require additional components for optimal variance retention.</p>
+    </section>
+    
+
+    <section class="content">
+
+        <h2>PCA Results and Conclusion</h2>
+    
+        <h3>Overview of PCA Analysis</h3>
+        <p>PCA was applied to the dataset to reduce dimensionality while preserving the most important variance. 
+           This transformation helps in understanding patterns within the data while improving computational efficiency.</p>
+    
+        <h3>Variance Retention</h3>
+        <p>The analysis retained <strong>95% of the variance</strong> while reducing the number of features.</p>
+        <ul>
+            <li><strong>Retained Variance:</strong> 95%</li>
+            <li><strong>Optimal Principal Components Chosen:</strong> <span style="color: red;">3</span> </li>
+        </ul>
+    
+        <h3>Key Data Patterns from PCA Projections</h3>
+        <p>The dataset was projected into <strong>2D and 3D spaces</strong> to observe structural patterns and cluster formations.</p>
+       
+        <p>The principal components provided clear insights into data separation and relationships between features.</p>
+    
+        <h3>Top Influencing Features in PCA</h3>
+        <p>Each principal component represents a linear combination of features with different levels of importance.</p>
+    
+        <div class="scrollable-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>PC1</th> <th>PC2</th> <th>PC3</th> <th>PC4</th> <th>PC5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Menstrual Cycle Length</td> <td>Testosterone Levels</td> <td>Body Mass Index</td> <td>Blood Sugar</td> <td>Insulin Resistance</td>
+                    </tr>
+                    <tr>
+                        <td>Ovarian Volume</td> <td>Follicle Count</td> <td>Weight Gain</td> <td>Cholesterol Levels</td> <td>Blood Pressure</td>
+                    </tr>
+                    <tr>
+                        <td>Physical Activity</td> <td>Hormonal Imbalance</td> <td>Dietary Patterns</td> <td>Age</td> <td>Triglycerides</td>
+                    </tr>
+                    <tr>
+                        <td>Blood Glucose Levels</td> <td>Stress Levels</td> <td>Waist Circumference</td> <td>Sleep Quality</td> <td>Heart Rate</td>
+                    </tr>
+                    <tr>
+                        <td>Androgen Levels</td> <td>Polycystic Ovaries</td> <td>Hormonal Therapy History</td> <td>Exercise Frequency</td> <td>Medication Response</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <h3>Conclusion</h3>
+        <p>PCA successfully reduced the dataset’s dimensionality while retaining <strong>95% of the variance</strong>. 
+           The most important <strong>principal components</strong> highlight key medical and lifestyle factors associated with PCOS.</p>
+    
+        <p>By applying PCA, we achieved:</p>
+        <ul>
+            <li><strong>Dimensionality reduction</strong> for improved model training efficiency.</li>
+            <li><strong>Identification of the most significant PCOS-related features</strong> for deeper analysis.</li>
+            <li><strong>Enhanced visualization</strong> to recognize patterns in clinical and lifestyle factors affecting PCOS.</li>
+        </ul>
+    
+        <p>PCA plays a crucial role in <strong>reducing redundancy</strong> and <strong>simplifying complex datasets</strong>, 
+           making it a valuable technique for predictive modeling and clustering.</p>
+
+    
+</section>
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>
