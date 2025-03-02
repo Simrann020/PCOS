@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Association Rule Mining (ARM) - PCOS Data</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Association Rule Mining (ARM)</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="pca.html">PCA</a></li>
+                <li><a href="clustering.html">Clustering</a></li>
+                <li><a href="arm.html" class="active">ARM</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ARM Overview -->
+    <section class="content">
+        <h2>What is Association Rule Mining (ARM)?</h2>
+        <p>
+            Association Rule Mining (ARM) is a data mining technique that identifies relationships between different variables in large datasets. 
+            It is widely used in market basket analysis to find associations between purchased items but also plays a crucial role in medical research, 
+            helping uncover hidden connections between symptoms, risk factors, and treatments.
+        </p>
+    
+        <h3>How ARM Works</h3>
+        <p>
+            ARM works by scanning a dataset to find patterns where the occurrence of one event (or item) is strongly linked to another. 
+            These associations are presented in the form of rules, such as:
+        </p>
+        <p class="rule-example">If a patient has irregular periods and high androgen levels, then the likelihood of insulin resistance increases.</p>
+    
+        <h3>Key Metrics in Association Rule Mining</h3>
+        <p>Association rules are evaluated based on the following metrics:</p>
+        <img src="../assests/ARM_Metric.webp" alt="ARM Metrics Visualization" class="pcos-image" onclick="openImage(this)">
+        
+        <ul>
+            <li><strong>Support:</strong> Measures how often a rule appears in the dataset. A high support value means the rule is relevant for many patients.</li>
+            <li><strong>Confidence:</strong> Measures the probability that one condition leads to another. Higher confidence indicates stronger relationships.</li>
+            <li><strong>Lift:</strong> Measures the strength of an association compared to random chance. A lift value greater than 1 suggests a meaningful relationship.</li>
+        </ul>
+    
+        <h3>Illustration of ARM Concepts</h3>
+        <p>Below is a visualization of how ARM works in medical datasets:</p>
+        <div class="image-container">
+            <img src="../assests/ARM_example.png" alt="ARM Example" class="pcos-image" onclick="openImage(this)">
+            
+           
+        </div>
+    
+        <h3>The Apriori Algorithm</h3>
+        <p>
+            The Apriori algorithm is one of the most widely used techniques in ARM. It identifies frequent itemsets and generates association rules by following an iterative process. 
+            The algorithm follows two steps:
+        </p>
+        <ol>
+            <li><strong>Frequent Itemset Generation:</strong> Identifies the most commonly occurring conditions, symptoms, or treatments.</li>
+            <li><strong>Rule Generation:</strong> Uses frequent itemsets to generate association rules based on support, confidence, and lift thresholds.</li>
+        </ol>
+    
+        <h3>How ARM is Used in PCOS Data Analysis</h3>
+        <p>In this project, ARM helps uncover meaningful patterns in PCOS data by analyzing patient records, symptoms, and medical history. 
+           Some key insights extracted using ARM include:</p>
+        <ul>
+            <li>Common symptom groupings, such as irregular periods + acne + weight gain being strongly linked to insulin resistance.</li>
+            <li>Frequent lifestyle habits associated with PCOS severity, like high sugar consumption increasing the risk of high androgen levels.</li>
+            <li>Most effective treatment combinations, such as metformin + dietary changes being linked to improved hormonal balance.</li>
+        </ul>
+    
+        <p>The findings from ARM help in developing personalized treatment plans for PCOS patients based on their symptom patterns and risk factors.</p>
+    </section>
+    
+
+
+    <section class="content">
+        <h2>Access Full Code on GitHub</h2>
+        <p>The complete ARM analysis, including data preprocessing and model implementation, is available on GitHub.</p>
+        <a href="https://github.com/Simrann020/PCOS/blob/main/Model/Arm.ipynb" target="_blank" class="github-button">View on GitHub</a>
+    </section>
+
+    <!-- Data Preparation & Transformation -->
+    <section class="content">
+        <h2>Data Preparation for ARM</h2>
+        <p>ARM requires categorical or binary-encoded transactional data. The dataset was transformed into a transaction format suitable for Apriori.</p>
+
+        <h3>Dataset Before Transformation</h3>
+        <img src="../assests/ARM_Before.png" alt="ARM Before Transformation" class="pcos-image" onclick="openImage(this)">
+        <p>Original dataset containing categorical medical history and lifestyle attributes.</p>
+
+        <h3>Dataset After Transformation</h3>
+        <img src="../assests/ARM_after.png" alt="ARM After Transformation" class="pcos-image" onclick="openImage(this)">
+        <p>Data converted into binary-encoded transaction format, where 1 indicates the presence of an item in a transaction.</p>
+
+        <h3>Key Transformations:</h3>
+        <ul>
+            <li>Categorical data converted into binary (0/1) representation.</li>
+            <li>Transaction data structure used for rule mining.</li>
+            <li>Redundant features removed to enhance association rule mining performance.</li>
+        </ul>
+    </section>
+
+    <!-- ARM Results & Analysis -->
+    <section class="content">
+        <h2>ARM Results & Top Association Rules</h2>
+        <p>
+            The Apriori algorithm was applied to the PCOS dataset to identify significant associations between symptoms, lifestyle factors, and treatments. 
+            The results highlight the most frequent and impactful rules, ranked based on support, confidence, and lift.
+        </p>
+    
+        <h3>Top 15 Rules by Support</h3>
+        <p>
+            Support measures how often an association occurs in the dataset. A higher support value indicates that a particular rule is relevant to a large portion of the data. 
+            The image below displays the top 15 rules based on support, showing the most common symptom and treatment patterns observed in PCOS patients.
+        </p>
+        <img src="../assests/support.png" alt="Top Rules by Support" class="pcos-image" onclick="openImage(this)">
+    
+        <h3>Top 15 Rules by Confidence</h3>
+        <p>
+            Confidence represents the likelihood that the presence of one condition leads to another. 
+            Higher confidence values suggest stronger relationships between features. The graph below highlights the top 15 association rules 
+            with the highest confidence, revealing how certain symptoms are linked to specific PCOS diagnoses or lifestyle factors.
+        </p>
+        <img src="../assests/confidence.png" alt="Top Rules by Confidence" class="pcos-image" onclick="openImage(this)">
+    
+        <h3>Top 15 Rules by Lift</h3>
+        <p>
+            Lift measures the strength of an association compared to random chance. A lift value greater than 1 suggests that the two conditions 
+            occur together more frequently than expected. The chart below illustrates the top 15 rules based on lift, helping to uncover strong 
+            medical and lifestyle correlations in PCOS patients.
+        </p>
+        <img src="../assests/Lift.png" alt="Top Rules by Lift" class="pcos-image" onclick="openImage(this)">
+    
+        <h3>Key Observations</h3>
+        <ul>
+            <li>
+                PCOS-related symptoms such as irregular periods, weight gain, and high androgen levels frequently appear together, indicating 
+                strong internal associations between hormonal imbalances and physical symptoms.
+            </li>
+            <li>
+                Certain lifestyle factors, such as high sugar consumption and lack of exercise, increase the likelihood of developing specific 
+                PCOS symptoms, suggesting that lifestyle modifications could play a role in managing the condition.
+            </li>
+            <li>
+                Common medication combinations were identified, providing insights into frequently used treatment approaches for different 
+                PCOS subgroups. This information can help healthcare professionals tailor treatments based on patient history.
+            </li>
+            <li>
+                Some unexpected associations were discovered, such as the connection between stress levels and hormonal imbalances, indicating 
+                that stress management might be a factor worth exploring in PCOS treatment strategies.
+            </li>
+        </ul>
+    
+        <p>
+            These insights from association rule mining can be used to develop personalized treatment recommendations and preventive strategies 
+            for PCOS management.
+        </p>
+    </section>
+    
+
+    <!-- Conclusion -->
+    <section class="content">
+        <h2>Conclusion</h2>
+        <p>
+            Association Rule Mining (ARM) helps uncover hidden relationships in PCOS-related data. The insights gained from support, confidence, and lift values can assist medical professionals in:
+        </p>
+        <ul>
+            <li>Developing personalized PCOS treatment plans.</li>
+            <li>Understanding how lifestyle factors contribute to symptom severity.</li>
+            <li>Identifying common symptom clusters that can improve diagnosis.</li>
+        </ul>
+
+        <p>ARM is a powerful tool in medical research, offering data-driven insights to enhance decision-making and improve patient care.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>

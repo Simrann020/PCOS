@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering - PCOS Data</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Clustering Methods for PCOS Analysis</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="pca.html">PCA</a></li>
+                <li><a href="clustering.html" class="active">Clustering</a></li>
+                <li><a href="arm.html">ARM</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Clustering Overview -->
+    <section class="content">
+        <h2>What is Clustering?</h2>
+        <p>
+            Clustering is an unsupervised machine learning technique used to group similar data points into clusters based on their characteristics. 
+            Unlike supervised learning, clustering does not require labeled data; instead, it relies on patterns and structures within the dataset to form meaningful groups. 
+            This makes clustering particularly useful for data exploration, anomaly detection, and identifying hidden subgroups.
+        </p>
+    
+        <h3>Why is Clustering Important for PCOS Analysis?</h3>
+        <p>
+            PCOS is a complex condition with multiple symptoms that vary among individuals. Clustering helps in:
+        </p>
+        <ul>
+            <li>Grouping patients with similar hormonal, metabolic, and reproductive characteristics.</li>
+            <li>Identifying subtypes of PCOS, enabling personalized treatment recommendations.</li>
+            <li>Understanding relationships between lifestyle factors and PCOS severity.</li>
+        </ul>
+    
+        <h3>How Clustering Works: Distance Metrics</h3>
+        <p>
+            Clustering methods rely on distance metrics to measure the similarity or dissimilarity between data points. 
+            Different distance metrics impact the clustering process, and the choice of metric depends on the dataset’s characteristics.
+        </p>
+    
+        <div class="image-container">
+            <img src="../assests/distance_metrics.png" alt="Distance Metrics in Clustering" class="pcos-image" onclick="openImage(this)">
+        </div>
+    
+        <h3>Distance Metrics in Clustering</h3>
+        <ul>
+            <li>Euclidean Distance: Measures the straight-line distance between two points in space.</li>
+            <li>Manhattan Distance: Measures distance by summing the absolute differences between coordinates, useful for grid-like data.</li>
+            <li>Cosine Similarity: Measures the angle between two feature vectors, useful when magnitude is not important, such as in text data.</li>
+        </ul>
+    
+        <p>These distance metrics help determine how data points are grouped, impacting the clustering structure.</p>
+    
+        <h3>Visualization of Clustering</h3>
+<p>Clustering algorithms group similar data points based on their characteristics. Below, we present both 2D and 3D visualizations of clustering results.</p>
+
+<h4>2D Clustering Visualization</h4>
+<p>The 2D projection of clustering results helps in understanding how data points are grouped when reduced to two principal components.</p>
+<div class="image-container">
+    <img src="../assests/2dclusters.png" alt="2D Clustering Example" class="pcos-image" onclick="openImage(this)">
+</div>
+<p>This visualization is useful for detecting well-separated clusters and overlapping regions, allowing us to evaluate how different clustering methods perform.</p>
+
+<h4>3D Clustering Visualization</h4>
+<p>Expanding to three dimensions provides a more detailed perspective, capturing more variance in the data and revealing deeper patterns.</p>
+<div class="image-container">
+    <img src="../assests/3dclusters.png" alt="3D Clustering Example" class="pcos-image" onclick="openImage(this)">
+</div>
+<p>The 3D visualization allows us to see how clusters are distributed in space, especially when using methods like K-Means, Hierarchical Clustering, and DBSCAN.</p>
+
+
+    
+        <h3>How Clustering is Used in This Project</h3>
+        <p>
+            In this project, clustering was applied to identify different PCOS patient subgroups based on medical and lifestyle features. 
+            This was done using three clustering techniques:
+        </p>
+        <ul>
+            <li>K-Means Clustering: Used to form distinct PCOS subgroups based on numerical data.</li>
+            <li>Hierarchical Clustering: Provided a tree-based visualization of how patients are related.</li>
+            <li>DBSCAN: Identified outliers in the dataset, which could represent unique PCOS cases.</li>
+        </ul>
+    
+        <p>By applying clustering, the goal is to discover hidden patterns in PCOS characteristics, optimize diagnosis, and support personalized treatment approaches.</p>
+    </section>
+    
+
+            <!-- GitHub Button -->
+            <section class="content">
+                <h2>Access Full Code on GitHub</h2>
+                <p>The complete clustering analysis, including data preprocessing and model implementation, is available on GitHub.</p>
+                <a href="https://github.com/Simrann020/PCOS/blob/main/Model/Clustering.ipynb" target="_blank" class="github-button">View on GitHub</a>
+            </section>
+        
+    <!-- Data Preparation & Code Access -->
+    <section class="content">
+        <h2>Data Preparation & Code Access</h2>
+        <p>Before applying clustering, we transformed the dataset by handling missing values, removing labels, and standardizing numerical features.</p>
+    
+        <h3>Dataset Before Preprocessing</h3>
+        <img src="../assests/Clustering_Global.png" alt="Raw Dataset" class="pcos-image">
+    
+        <h3>Dataset After Preprocessing</h3>
+        <img src="../assests/Clustering_Global_Cleaned.png" alt="Processed Dataset" class="pcos-image">
+    
+        <h3>Comparison: Before vs. After Transformation (Standardization)</h3>
+        <table class="comparison-table">
+            <tr>
+                <th>Feature</th>
+                <th>Before Standardization (Original Values)</th>
+                <th>After Standardization (Scaled Values)</th>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>22, 25, 30, 35</td>
+                <td>-1.08, 0.29, 1.48, 1.68</td>
+            </tr>
+            <tr>
+                <td>Lifestyle Score</td>
+                <td>5, 7, 9, 3</td>
+                <td>-1.57, 0.86, 1.56, -0.87</td>
+            </tr>
+            <tr>
+                <td>PCOS Likelihood</td>
+                <td>0.6, 0.8, 0.2, 1.0</td>
+                <td>-0.4, 0.31, -1.65, 1.68</td>
+            </tr>
+        </table>
+    
+        <h3>Key Differences:</h3>
+        <ul>
+            <li><strong>Before Transformation:</strong> Data is in original scale (e.g., actual age, PCOS likelihood).</li>
+            <li><strong>After Transformation:</strong> Data is standardized with mean = 0 and standard deviation = 1, making it easier for clustering models.</li>
+        </ul>
+    
+        <h3>Visualization Insight:</h3>
+        <ul>
+            <li>In raw data, values vary significantly across columns.</li>
+            <li>After transformation, values are normalized, improving clustering and model convergence.</li>
+        </ul>
+
+    </section>
+    
+<!-- KMeans Clustering -->
+<section class="content">
+    <h2>KMeans Clustering</h2>
+    <p>KMeans assigns data points to K clusters by minimizing the distance between points and their centroids. The Silhouette Method was used to determine the optimal K.</p>
+
+    <h3>Principal Component Variance Explanation</h3>
+    <p>After applying PCA, we reduced the dataset to three principal components:</p>
+    <table class="data-table">
+        <tr>
+            <th>Principal Component</th>
+            <th>Explained Variance</th>
+        </tr>
+        <tr>
+            <td>PC1</td>
+            <td>33.83%</td>
+        </tr>
+        <tr>
+            <td>PC2</td>
+            <td>33.40%</td>
+        </tr>
+        <tr>
+            <td>PC3</td>
+            <td>32.76%</td>
+        </tr>
+    </table>
+    <p>The first three components capture nearly all of the dataset's variance, ensuring effective clustering.</p>
+    <img src="../assests/k-mean_Pca.png" alt="PCA Variance Explanation" class="pcos-image">
+
+    <h3>Silhouette Score Analysis</h3>
+    <p>The silhouette score measures how well each data point fits within its cluster. Higher scores indicate better-defined clusters.</p>
+    <img src="../assests/kmean_S.png" alt="Silhouette Score Graph" class="pcos-image">
+
+    <h3>Silhouette Scores for Different K Values</h3>
+    <table class="silhouette-table">
+        <tr>
+            <th>K Value</th>
+            <th>Silhouette Score</th>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0.2459</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0.2421</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0.2679</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>0.2709</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>0.2904</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>0.2851</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>0.2885</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>0.2891</td>
+        </tr>
+    </table>
+    <p>The silhouette scores suggest that K=6 provides the best separation among clusters.</p>
+
+    <h3>2D KMeans Clustering Visualizations</h3>
+    <p>These plots show how KMeans clustering separates data in a two-dimensional space.</p>
+    <div class="cluster-images">
+        <img src="../assests/k-mean_2d.png" alt="KMeans Clustering K=6 (2D)" class="pcos-image">
+    </div>
+
+    <h3>3D KMeans Clustering Visualizations</h3>
+    <p>The 3D visualization provides deeper insights into how clusters are formed across three principal components.</p>
+    <div class="cluster-images">
+        <img src="../assests/k-mean_3d.png" alt="KMeans Clustering K=6 (3D)" class="pcos-image">
+    </div>
+    <p>From these visualizations, K=6 provides well-separated clusters, supporting the silhouette analysis.</p>
+</section>
+
+
+<!-- Hierarchical Clustering -->
+ <!-- Hierarchical Clustering -->
+ <section class="content">
+    <h2>Hierarchical Clustering</h2>
+    <p>Hierarchical Clustering builds a tree-like structure (dendrogram) to represent relationships between clusters. It helps in understanding how data points group together at different levels of similarity.</p>
+
+    <h3>Hierarchical Clustering</h3>
+    <p class="desc">The dendrogram represents the hierarchical structure of clusters, showing how individual data points merge into larger clusters step by step.</p>
+    <img src="../assests/H_dendogram.png" alt="Hierarchical Clustering Dendrogram" class="pcos-image open-image">
+
+    <h3>Hierarchical Clustering with Cosine Similarity</h3>
+    <p class="desc">This dendrogram is based on cosine similarity, which measures how similar two data points are in terms of their angle rather than Euclidean distance.</p>
+    <img src="../assests/Cosine.png" alt="Hierarchical Clustering with Cosine Similarity" class="pcos-image open-image">
+
+    <h3>2D Hierarchical Clustering</h3>
+    <p class="desc">A 2D visualization of hierarchical clustering, showing how data points group together in two-dimensional space.</p>
+    <img src="../assests/H_2D.png" alt="2D Hierarchical Clustering" class="pcos-image open-image">
+
+    <h3>3D Hierarchical Clustering</h3>
+    <p class="desc">A 3D representation of hierarchical clustering, providing a deeper look into how clusters are distributed in three-dimensional space.</p>
+    <img src="../assests/H_3D.png" alt="3D Hierarchical Clustering" class="pcos-image open-image">
+</section>
+
+<!-- DBSCAN Clustering -->
+<section class="content">
+    <h2>DBSCAN Clustering</h2>
+    <p>DBSCAN (Density-Based Spatial Clustering of Applications with Noise) groups data points based on density. It can identify clusters of varying shapes and detect outliers effectively compared to KMeans.</p>
+
+    <h3>2D DBSCAN Clustering</h3>
+    <p class="desc">This 2D scatter plot represents how DBSCAN clusters data based on density, distinguishing core points, border points, and noise (outliers).</p>
+    <img src="../assests/DBSCAN_2d.png" alt="2D DBSCAN Clustering" class="pcos-image" onclick="openImage(this)">
+
+    <h3>3D DBSCAN Clustering</h3>
+    <p class="desc">A 3D visualization of DBSCAN clustering, illustrating how clusters are formed in a three-dimensional space and highlighting outlier points.</p>
+    <img src="../assests/DBSCAN_3d.png" alt="3D DBSCAN Clustering" class="pcos-image" onclick="openImage(this)">
+</section>
+
+<!-- Results & Comparisons -->
+<section class="content">
+    <h2>Results & Comparison</h2>
+    <p>Below is a comparison of the three clustering methods applied to the PCOS dataset.</p>
+
+    <h3>Summary of Clustering Methods</h3>
+    <ul>
+        <li><strong>KMeans:</strong> Produces well-defined clusters when K=6, but sensitive to outliers.</li>
+        <li><strong>Hierarchical Clustering:</strong> Useful for understanding hierarchical relationships, but may struggle with large datasets.</li>
+        <li><strong>DBSCAN:</strong> Effectively identifies outliers and non-linear structures, but choosing the right parameters (eps, min_samples) is critical.</li>
+    </ul>
+
+    <h3>Silhouette Scores Comparison</h3>
+    <p>Silhouette scores evaluate how well each clustering method separates data points. Higher scores indicate better-defined clusters.</p>
+
+    <table class="silhouette-table">
+        <tr>
+            <th>Clustering Method</th>
+            <th>Silhouette Score</th>
+        </tr>
+        <tr>
+            <td>K-Means</td>
+            <td>0.2421</td>
+        </tr>
+        <tr>
+            <td>Hierarchical Clustering</td>
+            <td>0.2047</td>
+        </tr>
+        <tr>
+            <td>DBSCAN</td>
+            <td>0.3389</td>
+        </tr>
+    </table>
+
+
+</section>
+
+
+
+
+
+        <!-- Conclusion -->
+        <section class="content">
+
+            <h2 class="clustering-heading">Clustering Results and Conclusion</h2>
+        
+            <h3 class="clustering-subheading">Overview of Clustering Analysis</h3>
+            <p class="clustering-text">
+                Clustering techniques were applied to group similar PCOS-related data points. This unsupervised learning method helps in identifying patterns and relationships in patient profiles, lifestyle habits, and medical conditions.
+            </p>
+        
+            <h3 class="clustering-subheading">Best Cluster Selection & Evaluation</h3>
+            <p class="clustering-text">The optimal number of clusters was determined using the Silhouette Score Method and PCA-based dimensionality reduction.</p>
+        
+            <ul class="clustering-list">
+                <li><strong>Best K for KMeans:</strong> 6</li>
+                <li><strong>Best Clustering Technique for PCOS Data:</strong> DBSCAN (highest silhouette score)</li>
+            </ul>
+        
+            <h3 class="clustering-subheading">Silhouette Scores for Different Clustering Methods</h3>
+            <table class="clustering-table">
+                <thead>
+                    <tr>
+                        <th>Clustering Method</th>
+                        <th>Silhouette Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>K-Means</td>
+                        <td>0.2421</td>
+                    </tr>
+                    <tr>
+                        <td>Hierarchical Clustering</td>
+                        <td>0.2047</td>
+                    </tr>
+                    <tr>
+                        <td>DBSCAN</td>
+                        <td>0.3389</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <h3 class="clustering-subheading">Key Data Patterns from Clustering</h3>
+            <p class="clustering-text">Cluster projections using 2D and 3D spaces reveal how PCOS subgroups are distributed.</p>
+
+            <p class="clustering-text">
+                The clustering approach revealed hidden patterns in medical history, lifestyle choices, and symptom severity.
+            </p>
+        
+            <h3 class="clustering-subheading">Conclusion</h3>
+            <p class="clustering-text">Clustering techniques helped in discovering meaningful patterns in the PCOS dataset. The results suggest:</p>
+        
+            <ul class="clustering-list">
+                <li><strong>K-Means</strong> provides well-defined clusters but is sensitive to outliers.</li>
+                <li><strong>Hierarchical Clustering</strong> is useful for understanding subgroup relationships.</li>
+                <li><strong>DBSCAN</strong> effectively detects outliers, making it useful for anomaly detection in patient symptoms.</li>
+            </ul>
+        
+            <p class="clustering-text">These insights can assist in personalized treatment approaches and better diagnosis for PCOS patients.</p>
+        
+            
+        </section>
+        
+    
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+        </footer>
+
+</body>
+</html>
