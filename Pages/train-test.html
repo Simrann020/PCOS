@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train-Test Split</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>PCOS Model - Train-Test Split</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+               
+                <li><a href="train_test_split.html" class="active">Train-Test Split</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="conclusion.html">Conclusions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="content">
+        <h2>🧪 Train-Test Split Strategy</h2>
+    
+        <p>
+            To train and evaluate our machine learning models, we used a standard practice of splitting the dataset into <strong>training</strong> and <strong>testing</strong> subsets.
+            The training set is used to build the model, while the testing set evaluates how well the model performs on unseen data.
+        </p>
+    
+        <p>
+            It is essential that the training and testing sets are <strong>disjoint</strong> — meaning no overlap — to avoid data leakage. This ensures our accuracy metrics truly reflect the model's generalization ability.
+        </p>
+    
+        <h3>🔄 Split Logic by Model</h3>
+        <ul>
+            <li>
+                <strong>Naïve Bayes (Core & Global):</strong> Used <code>train_test_split</code> with an 80/20 ratio and a <code>random_state</code> of 42 for reproducibility. 
+                For the Core dataset, binary categorical features were encoded; for the Global dataset, numerical features were scaled and categorical ones encoded.
+            </li>
+            <li>
+                <strong>Decision Tree (Core & Global):</strong> Followed the same 80/20 disjoint split using <code>train_test_split</code>. Preprocessing involved encoding and selecting top clinical features.
+            </li>
+            <li>
+                <strong>Logistic Regression:</strong> Same split logic as above. The output variable was binary (PCOS Y/N), with cleaned numerical and binary inputs.
+            </li>
+            <li>
+                <strong>Multinomial Naïve Bayes:</strong> Applied to both datasets. For continuous features, conversion to discrete or count-like representations was considered when appropriate.
+            </li>
+            <li>
+                <strong>Ensemble Methods & SVMs:</strong> These will use the same disjoint 80/20 split, unless hyperparameter tuning or cross-validation is used, which will be clearly indicated in their respective sections.
+            </li>
+        </ul>
+    
+        <h3>📌 Summary</h3>
+        <p>
+            All models maintain a consistent 80/20 training-testing split. However, feature encoding and scaling may differ to suit algorithm requirements.
+            This page will be updated if any algorithm requires a different splitting strategy.
+        </p>
+    
+        <h2>🖼️ Visualizing Train-Test Splits</h2>
+        <p>
+            Below are screenshots showing how the datasets were split for each algorithm. These ensure that the splits were disjoint and representative of the original class distribution.
+        </p>
+    
+        <div class="image-container">
+    
+            <div>
+                <h4>Naïve Bayes – Core PCOS Dataset</h4>
+                <figure>
+                    <img src="../assests/NB-training.png" alt="Naïve Bayes Training Data Sample" class="split-image">
+                    <figcaption>Sample of the training dataset used for Naïve Bayes using the Core PCOS dataset.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/NB-testing.png" alt="Naïve Bayes Testing Data Sample" class="split-image">
+                    <figcaption>Sample of the testing dataset showing normalized features and PCOS labels.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/NB-division.png" alt="Naïve Bayes Data Shape Split" class="split-image">
+                    <figcaption>Train-test split shape for Core Naïve Bayes: 865 training samples, 217 test samples.</figcaption>
+                </figure>
+            </div>
+        
+            <div>
+                <h4>Decision Tree – Core PCOS Dataset</h4>
+                <figure>
+                    <img src="../assests/DT_core_train.png" alt="Decision Tree Training Data Core" class="split-image">
+                    <figcaption>Training dataset for Decision Tree using selected top features (Core PCOS).</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/DT_core_test.png" alt="Decision Tree Testing Data Core" class="split-image">
+                    <figcaption>Testing dataset for Decision Tree, used for performance evaluation.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/DT_core_split.png" alt="Decision Tree Split Shape Core" class="split-image">
+                    <figcaption>Split summary: 865 training and 217 testing samples.</figcaption>
+                </figure>
+            </div>
+        
+            <div>
+                <h4>Regression – Core PCOS Dataset</h4>
+                <figure>
+                    <img src="../assests/Reg_train.png" alt="Regression Train Data" class="split-image">
+                    <figcaption>Train data prepared for Logistic and Multinomial Regression using cleaned features.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/Reg_test.png" alt="Regression Test Data" class="split-image">
+                    <figcaption>Test data from Core PCOS after scaling and cleaning.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/Reg_split.png" alt="Regression Split Shape" class="split-image">
+                    <figcaption>Regression model split: 865 training and 217 testing entries.</figcaption>
+                </figure>
+            </div>
+        
+            <div>
+                <h4>Naïve Bayes – Global PCOS Dataset</h4>
+                <figure>
+                    <img src="../assests/NB_global_train.png" alt="Global NB Training Data" class="split-image">
+                    <figcaption>Training data from Global PCOS, encoded and preprocessed for NB model.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/NB_global_testiing.png" alt="Global NB Testing Data" class="split-image">
+                    <figcaption>Testing portion of the Global dataset used in Naïve Bayes model.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/NB_global_divsion.png" alt="Global NB Split Shape" class="split-image">
+                    <figcaption>Train-Test shape: 96,000 for training and 24,000 for testing samples.</figcaption>
+                </figure>
+            </div>
+        
+            <div>
+                <h4>Decision Tree – Global PCOS Dataset</h4>
+                <figure>
+                    <img src="../assests/DT_global_train.png" alt="DT Global Training Data" class="split-image">
+                    <figcaption>Training data for Global Decision Tree model based on selected top-ranked features.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/DT_global_test.png" alt="DT Global Testing Data" class="split-image">
+                    <figcaption>Test data from Global PCOS used to validate Decision Tree predictions.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/DT_global_split.png" alt="DT Global Split Shape" class="split-image">
+                    <figcaption>Train-test shape for Global dataset: 96,000 training and 24,000 testing samples.</figcaption>
+                </figure>
+            </div>
+        
+        </div>
+        
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>

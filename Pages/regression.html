@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regression Models</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Regression Models</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="naive_bayes.html">Naïve Bayes</a></li>
+                <li><a href="decision_tree.html">Decision Tree</a></li>
+                <li><a href="regression.html" class="active">Regression</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h2>📊 Regression Questions and Overview</h2>
+    
+        <h3>1️⃣ What is Regression?</h3>
+        <p>
+            Regression is a type of supervised machine learning algorithm used to predict a continuous outcome variable based on one or more input features. 
+            It helps identify relationships between variables and can estimate trends or outcomes. In the context of healthcare, regression can help predict the likelihood of a condition based on clinical indicators.
+            Common types include Linear Regression and Logistic Regression depending on the nature of the target variable.
+        </p>
+    
+        <h3>2️⃣ What Makes Regression Supervised?</h3>
+        <p>
+            Regression is considered a supervised learning technique because it trains the model on labeled data, where both the input features and the target outcome are known. 
+            The model learns a mapping function from inputs to outputs. 
+            Once trained, it can then predict outcomes for new, unseen data.
+        </p>
+    
+        <h3>3️⃣ What Is It Used For?</h3>
+        <p>
+            Regression is used for forecasting and estimating numeric outcomes. 
+            For example, it can be used to predict PCOS likelihood, BMI changes, blood pressure, or hormone levels. 
+            In classification tasks like ours, Logistic Regression is used to estimate the probability of class membership (e.g., PCOS or not).
+        </p>
+    
+        <h3>4️⃣ What Is the Output?</h3>
+        <p>
+            The output of a regression model is a numeric prediction. 
+            In Linear Regression, the output is a continuous value like weight or temperature.
+            In Logistic Regression, the output is a probability between 0 and 1, which can be interpreted as a classification decision when a threshold (like 0.5) is applied.
+        </p>
+    
+        <h3>5️⃣ What Kind of Data Works Best?</h3>
+        <p>
+            Regression models work best with numerical data that has meaningful relationships between input variables and outcomes. 
+            Logistic Regression is especially suited for binary or categorical outcomes with independent numerical or encoded features. 
+            Clean, well-preprocessed, and non-redundant data improves performance and model accuracy.
+        </p>
+    
+        <div class="image-container">
+            <img src="../assests/regression.webp" alt="Regression Overview Diagram" class="pcos-image">
+        </div>
+    </section>
+    
+
+    <section class="content">
+        <h2>📈 Access Full Regression Code on GitHub</h2>
+        <p>
+            The full implementation of Logistic and Multinomial Regression models — including data preprocessing, model training, evaluation, and visualization — is available on GitHub.
+        </p>
+        <a href="https://github.com/Simrann020/PCOS/blob/main/Model/Regression.ipynb" target="_blank" class="github-button">View Regression Code on GitHub</a>
+    </section>
+    
+
+    
+    <section class="content">
+        <h2>🛠️ Regression Data Preparation & Code</h2>
+        
+        <h3>1️⃣ Cleaned Dataset</h3>
+        <p>
+            For this regression task, we worked with the <strong>Core PCOS Dataset</strong> and prepared it using the following preprocessing steps:
+        </p>
+        <ul>
+            <li>Whitespace was removed from column names for consistency.</li>
+            <li>Relevant features were selected: <strong>Age (yrs)</strong>, <strong>BMI</strong>, <strong>Hair growth(Y/N)</strong>, <strong>Hair loss(Y/N)</strong>, <strong>Pimples(Y/N)</strong>, <strong>Fast food(Y/N)</strong>, and <strong>Reg.Exercise(Y/N)</strong>.</li>
+            <li>All categorical features with <code>Y/N</code> values were converted to binary (0 = No, 1 = Yes).</li>
+            <li>Numerical columns like Age and BMI were normalized using Min-Max Scaling for improved regression model performance.</li>
+        </ul>
+        <p>
+            Below is a sample preview of the cleaned and scaled dataset before splitting:
+        </p>
+        <div class="image-container">
+            <img src="../assests/Reg_clean.png" alt="Cleaned and Scaled Regression Dataset" class="pcos-image">
+        </div>
+    
+        <h3>2️⃣ Train-Test Split</h3>
+        <p>
+            The dataset was split into <strong>80% training</strong> and <strong>20% testing</strong> using <code>train_test_split</code> from scikit-learn.
+            This ensures that the model learns from one part of the data and is tested on unseen examples to evaluate generalization.
+        </p>
+    
+        <p><strong>Training Data Sample:</strong></p>
+        <div class="image-container">
+            <img src="../assests/Reg_train.png" alt="Training Data for Regression" class="pcos-image">
+        </div>
+    
+        <p><strong>Testing Data Sample:</strong></p>
+        <div class="image-container">
+            <img src="../assests/Reg_test.png" alt="Testing Data for Regression" class="pcos-image">
+        </div>
+
+        <p>
+            The following output confirms the shapes of the train and test sets. This helps ensure a proper distribution of data and prevents data leakage between training and testing.
+        </p>
+        <div class="image-container">
+            <img src="../assests/Reg_split.png" alt="Train/Test Split Shape for Decision Tree" class="decision-image">
+        </div>
+    
+    
+    </section>
+    
+    <section class="content">
+        <h2>📈 Regression Results and Conclusions</h2>
+    
+        <p>
+            After training and testing both the <strong>Logistic Regression</strong> and <strong>Multinomial Naïve Bayes</strong> models, we evaluated their performance 
+            using <strong>accuracy scores</strong> and <strong>confusion matrices</strong> to understand how well each model performed in classifying PCOS.
+        </p>
+    
+        <h3>1️⃣ Confusion Matrices & Accuracy Scores</h3>
+    
+        <div class="image-container">
+            <div>
+                <h4>Logistic Regression</h4>
+                <img src="../assests/LR_Confusion.png" alt="Logistic Regression Confusion Matrix" class="pcos-image">
+                <p>
+                    Accuracy: <strong>0.76</strong><br>
+                    <strong>Explanation:</strong> Logistic Regression demonstrated slightly better performance with 25 true positives and 140 true negatives.
+                    It misclassified fewer PCOS patients compared to Multinomial NB.
+                </p>
+            </div>
+    
+            <div>
+                <h4>Multinomial Naïve Bayes</h4>
+                <img src="../assests/Multi_Confusion .png" alt="Multinomial NB Confusion Matrix" class="pcos-image">
+                <p>
+                    Accuracy: <strong>0.75</strong><br>
+                    <strong>Explanation:</strong> Multinomial NB showed slightly lower performance, correctly identifying 21 PCOS cases and 141 non-PCOS cases.
+                    It had a higher number of false negatives compared to Logistic Regression.
+                </p>
+            </div>
+        </div>
+    
+        <h3>2️⃣ Comparison Table</h3>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Accuracy</th>
+                    <th>True Positives</th>
+                    <th>True Negatives</th>
+                    <th>False Positives</th>
+                    <th>False Negatives</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Logistic Regression</td>
+                    <td>0.76</td>
+                    <td>25</td>
+                    <td>140</td>
+                    <td>8</td>
+                    <td>44</td>
+                </tr>
+                <tr>
+                    <td>Multinomial Naïve Bayes</td>
+                    <td>0.75</td>
+                    <td>21</td>
+                    <td>141</td>
+                    <td>7</td>
+                    <td>48</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </section>
+    <section class="content">
+        <h3>🔍 What Did We Learn?</h3>
+    
+        <p>
+            In our regression-based modeling for PCOS classification, both <strong>Logistic Regression</strong> and <strong>Multinomial Naïve Bayes</strong> achieved fairly similar results, with accuracy scores of <strong>0.76</strong> and <strong>0.75</strong>, respectively. However, Logistic Regression was able to correctly identify more PCOS cases and slightly reduced the number of false negatives.
+        </p>
+    
+        <p>
+            From this, we learned that <strong>Logistic Regression is a better fit</strong> for our PCOS dataset because it handles continuous variables well and does not rely on the strong assumption of feature independence like Naïve Bayes. It also provides coefficients that help in understanding the influence of each feature on the outcome.
+        </p>
+    
+        <p>
+            On the other hand, <strong>Multinomial Naïve Bayes</strong> assumes features represent discrete counts (like word frequency in NLP), which doesn't align well with the clinical and scaled continuous data in our project. While it's fast and easy to interpret, its performance slightly lags behind Logistic Regression in this context.
+        </p>
+    
+        <p>
+            ✅ <strong>Key Takeaway:</strong> For clinical prediction tasks with a mix of binary and scaled continuous features, <em>Logistic Regression is more robust</em> and provides higher sensitivity — which is crucial for reducing the risk of missed diagnoses in PCOS detection.
+        </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>

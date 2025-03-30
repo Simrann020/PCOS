@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Tree Model</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Decision Tree Model</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="naive_bayes.html">Naïve Bayes</a></li>
+                <li><a href="decision_tree.html" class="active">Decision Tree</a></li>
+                <li><a href="regression.html">Regression</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <section class="content">
+        <h2>🌳 Decision Trees (DTs) Overview</h2>
+        <p>
+            A <strong>Decision Tree (DT)</strong> is a type of supervised learning algorithm used for both classification and regression problems. It works by repeatedly splitting the dataset into smaller subsets based on the most significant feature at each step. These splits form a tree-like structure of decisions, where:
+        </p>
+        <ul>
+            <li>🔸 Each <strong>internal node</strong> represents a test on a feature (e.g., BMI &gt; 25).</li>
+            <li>🔸 Each <strong>branch</strong> corresponds to the outcome of that test.</li>
+            <li>🔸 Each <strong>leaf node</strong> represents a final decision or class label (e.g., PCOS or Not PCOS).</li>
+        </ul>
+    
+        <p>
+            The algorithm learns by choosing splits that best separate the data into pure groups — i.e., groups that contain mostly a single class.
+        </p>
+    
+        <h3>📚 Gini, Entropy, and Information Gain</h3>
+        <p>
+            To decide how to split the data at each node, Decision Trees use measures of impurity or uncertainty. The two most common are:
+        </p>
+    
+        <ul>
+            <li>
+                <strong>Gini Impurity:</strong> Measures how often a randomly chosen element from the set would be incorrectly labeled. Lower values mean purer nodes. Gini is simple and fast, which makes it the default criterion in many implementations like <code>sklearn</code>.
+            </li>
+            <li>
+                <strong>Entropy:</strong> Based on information theory, entropy measures the disorder or randomness in the data. The goal is to reduce entropy after each split.
+            </li>
+        </ul>
+    
+        <p>
+            The difference in entropy before and after a split is called <strong>Information Gain</strong>. A good split results in high information gain, meaning the data is more organized (or purer) after the split.
+        </p>
+    
+        <div class="image-container">
+            <img src="../assests/decsion_tree.png" alt="Gini vs Entropy in Decision Trees" class="decision-image">
+        </div>
+    
+        <p>
+            In short, Decision Trees select the best feature to split on by calculating either the <strong>Gini Impurity</strong> or <strong>Information Gain</strong> at each step. This process continues recursively until all data points are perfectly classified (or stopping criteria are met).
+        </p>
+    </section>
+
+    <section class="content">
+        <h2>🌳 Access Full Decision Tree Code on GitHub</h2>
+        <p>The complete Decision Tree modeling process — including data preprocessing, training, tuning root nodes, and visualizing results — is available on GitHub.</p>
+        <a href="https://github.com/Simrann020/PCOS/blob/main/Model/Decision_Tree.ipynb" target="_blank" class="github-button">View Decision Tree Code on GitHub</a>
+    </section>
+    
+    
+
+    <section class="content">
+        <h2>DT Data Preparation & Code</h2>
+        <h3>1️⃣ Core PCOS Dataset Preparation</h3>
+    
+        <h3>1️⃣ Cleaned Dataset (Core PCOS)</h3>
+        <p>
+            To train our Decision Tree model, we used the <strong>Core PCOS Dataset</strong>, which includes critical features related to age, body metrics, and physical symptoms. However, before feeding the data into the model, we performed thorough cleaning and preprocessing to ensure it was suitable for supervised learning.
+        </p>
+        <p>
+            The cleaning process included:
+        </p>
+        <ul>
+            <li><strong>Whitespace Removal:</strong> Some column names included unwanted spaces, which were removed to avoid syntax errors during feature selection.</li>
+            <li><strong>Feature Selection:</strong> We selected the most relevant features for predicting PCOS — namely:
+                <code>Age (yrs)</code>, <code>BMI</code>, <code>Hair Growth</code>, <code>Hair Loss</code>, <code>Pimples</code>, and the target variable <code>PCOS (Y/N)</code>.
+            </li>
+            <li><strong>Categorical Encoding:</strong> Binary categorical features (like 'Y'/'N') were converted to numeric format (1/0) to be compatible with the decision tree model.</li>
+        </ul>
+    
+        <p>Here is a snapshot of the dataset after cleaning and preparation:</p>
+        <div class="image-container">
+            <img src="../assests/DT_core_clean.png" alt="Cleaned Core PCOS Dataset for DT" class="decision-image">
+        </div>
+    
+        <h3>2️⃣ Sample Train and Test Data</h3>
+        <p>
+            After cleaning, the dataset was split into <strong>80% training</strong> and <strong>20% testing</strong> subsets using scikit-learn’s <code>train_test_split</code> function.
+            This split is essential in supervised learning because:
+        </p>
+        <ul>
+            <li><strong>The training set</strong> is used to build the model — i.e., to help the Decision Tree learn patterns from labeled examples.</li>
+            <li><strong>The testing set</strong> allows us to evaluate how well the model performs on unseen data, which is critical for assessing generalization.</li>
+        </ul>
+    
+        <div class="image-container">
+            <img src="../assests/DT_core_train.png" alt="DT Train Data Sample" class="decision-image">
+            <img src="../assests/DT_core_test.png" alt="DT Test Data Sample" class="decision-image">
+        </div>
+    
+        <p>
+            The following output confirms the shapes of the train and test sets. This helps ensure a proper distribution of data and prevents data leakage between training and testing.
+        </p>
+        <div class="image-container">
+            <img src="../assests/DT_core_split.png" alt="Train/Test Split Shape for Decision Tree" class="decision-image">
+        </div>
+    
+    </section>
+    
+    <section class="content">
+        <h3>3️⃣ Main Decision Tree Visualization</h3>
+        <p>
+            Before exploring variations, we trained a baseline Decision Tree classifier using the <code>Gini Impurity</code> as the splitting criterion 
+            and limited its maximum depth to <strong>3</strong>. This constraint ensures the model remains interpretable while still capturing 
+            important patterns in the data.
+        </p>
+        
+        <p>
+            Decision Trees split the dataset by asking yes/no questions at each node based on feature thresholds. The goal is to create the purest possible groups (nodes) 
+            where most or all samples belong to a single class (PCOS or non-PCOS).
+        </p>
+    
+        <p>
+            Below is the baseline Decision Tree model trained on the Core PCOS dataset. It shows how features like <strong>BMI</strong>, 
+            <strong>Pimples</strong>, and <strong>Hair Loss</strong> were used to separate PCOS-positive and negative patients.
+        </p>
+    
+        <div class="image-container">
+            <img src="../assests/DT_core.png" alt="Main Decision Tree Visualization" class="decision-image">
+        </div>
+    
+        <p>
+            🔍 <strong>Tree Interpretation:</strong> The top node (root) is the most important decision point. In this case, it may be <code>BMI</code> or another 
+            highly influential feature. Each branch splits the data further, ultimately leading to a classification of either "PCOS" or "No PCOS" at the leaves.
+        </p>
+    
+        <p>
+            This visual helps us understand which features are most influential and how the decision-making path flows, making Decision Trees a transparent and explainable model for medical data.
+        </p>
+    
+        <h4>📊 Confusion Matrix</h4>
+        <div class="image-container">
+            <img src="../assests/DT_core_confusion.png" alt="Decision Tree Confusion Matrix" class="decision-image">
+        </div>
+        <p>
+            The confusion matrix above shows the model's performance on the test data:
+        </p>
+        <ul>
+            <li><strong>True Positives (TP):</strong> 15 — correctly predicted PCOS cases.</li>
+            <li><strong>True Negatives (TN):</strong> 143 — correctly predicted non-PCOS cases.</li>
+            <li><strong>False Positives (FP):</strong> 5 — predicted PCOS when actually non-PCOS.</li>
+            <li><strong>False Negatives (FN):</strong> 54 — missed PCOS cases (predicted as non-PCOS).</li>
+        </ul>
+        <p>
+            ⚠️ <strong>Insight:</strong> While the model does a great job identifying non-PCOS individuals (high specificity), it struggles with detecting actual PCOS cases (low sensitivity), which results in a high number of false negatives.
+            This is important in healthcare because missing a diagnosis can lead to delayed treatment.
+        </p>
+    </section>
+    
+    <section class="content">
+        <h3>4️⃣ Decision Trees with Different Root Nodes</h3>
+    
+        <p>
+            To better understand the influence of individual features, we explored how the Decision Tree behaves when we manipulate the <strong>root node</strong>. 
+            Using <code>feature_importances_</code> from our baseline model, we ranked the features and manually created trees that prioritize different root nodes.
+        </p>
+    
+        <p>
+            🔍 <strong>Top 3 Features by Importance:</strong>
+        </p>
+        <ul>
+            <li><strong>hair growth(Y/N)</strong>: 0.5513</li>
+            <li><strong>BMI</strong>: 0.1884</li>
+            <li><strong>Age (yrs)</strong>: 0.1324</li>
+        </ul>
+    
+        <p>
+            We built three alternative decision trees by reordering feature columns so that each of these appeared at the root, and then retrained and visualized each model. Below are the visualizations and observations:
+        </p>
+    
+        <div class="image-container">
+            <div>
+                <h4>Root Node: <code>hair growth(Y/N)</code></h4>
+                <img src="../assests/DT_Core_Hair .png" alt="Tree with hair growth as root" class="decision-image">
+                <p><em>Explanation:</em> The most influential feature, <strong>hair growth</strong>, resulted in the cleanest splits early in the tree. 
+                This structure reduced impurity and increased the accuracy of early predictions. This is consistent with medical findings, where hair growth is a strong indicator of PCOS.</p>
+                <img src="../assests/confusion_core_Hair.png" alt="Confusion Matrix - Hair Growth Root" class="decision-image">
+                <p><strong>Confusion Matrix:</strong> <br>
+                <em>The tree achieved 73% accuracy. It correctly predicted 143 non-PCOS and 15 PCOS cases. The false negatives were 54, and only 5 false positives were observed.</em></p>
+            </div>
+    
+            <div>
+                <h4>Root Node: <code>BMI</code></h4>
+                <img src="../assests/DT_Core_BMI.png" alt="Tree with BMI as root" class="decision-image">
+                <p><em>Explanation:</em> When <strong>BMI</strong> was forced as the root node, the splits were still meaningful but slightly less pure than with <code>hair growth</code>. 
+                BMI serves as an important health indicator, but alone may not capture the complexity of PCOS symptoms.</p>
+                <img src="../assests/confusion_core_BMI.png" alt="Confusion Matrix - BMI Root" class="decision-image">
+                <p><strong>Confusion Matrix:</strong> <br>
+                <em>This configuration also achieved 73% accuracy. It correctly predicted 142 non-PCOS and 16 PCOS cases, with slightly fewer false negatives (53) than the hair growth-based tree.</em></p>
+            </div>
+    
+            <div>
+                <h4>Root Node: <code>Age (yrs)</code></h4>
+                <img src="../assests/DT_Core_Age.png" alt="Tree with Age as root" class="decision-image">
+                <p><em>Explanation:</em> Starting the tree with <strong>Age</strong> resulted in broader splits and less precise groupings. 
+                Age contributes to PCOS diagnosis, but its effect is indirect, making it a less effective root node.</p>
+                <img src="../assests/confusion_core_Age.png" alt="Confusion Matrix - Age Root" class="decision-image">
+                <p><strong>Confusion Matrix:</strong> <br>
+                <em>This model performed similarly, with 73% accuracy. Like the BMI-rooted tree, it predicted 142 non-PCOS and 16 PCOS cases accurately, with 53 false negatives.</em></p>
+            </div>
+        </div>
+    
+        <p>
+            This analysis showcases how choosing different root features can affect the decision pathways, tree shape, and classification accuracy. 
+            It demonstrates the importance of feature selection and the interpretability advantage offered by Decision Trees.
+        </p>
+    </section>
+    
+    <section class="content">
+        <h3>5️⃣ What Did We Learn?</h3>
+    
+        <p>
+            From our Decision Tree experiments using the Core PCOS dataset, we gained several key insights about both the data and the model’s behavior:
+        </p>
+    
+        <ul>
+            <li>
+                <strong>Feature Importance Matters:</strong> The model consistently performed best when the most influential feature—<code>hair growth(Y/N)</code>—was at the root. This confirms that starting with a strong predictor allows for more effective splits and a purer tree structure.
+            </li>
+    
+            <li>
+                <strong>All Root Configurations Yielded Similar Accuracy:</strong> Despite different starting points (hair growth, BMI, Age), all trees achieved ~<strong>73% accuracy</strong>. However, the quality of the splits and interpretability varied significantly.
+            </li>
+    
+            <li>
+                <strong>Hair Growth (Y/N) is a Strong Indicator of PCOS:</strong> Its presence in the root node produced early separation between classes and resulted in fewer false positives. This aligns well with clinical evidence linking hirsutism to PCOS diagnosis.
+            </li>
+    
+            <li>
+                <strong>Model is Sensitive to Feature Order:</strong> Although accuracy was consistent, the structure and depth of the tree changed depending on the root. This highlights the importance of preprocessing, feature engineering, and understanding the model's interpretability.
+            </li>
+    
+            <li>
+                <strong>Trade-off Between Simplicity and Accuracy:</strong> With a maximum depth of 3, the tree remained readable and interpretable—ideal for medical applications where transparency is important—but deeper trees may improve recall, especially for under-predicted PCOS cases.
+            </li>
+        </ul>
+    
+        <p>
+            🔍 <strong>Key Takeaway:</strong> Decision Trees are not only effective classifiers for PCOS prediction but also provide an interpretable visual representation of feature importance and decision logic. In this case, <strong>hair growth (Y/N)</strong> proved to be the most predictive feature, validating its clinical significance.
+        </p>
+    </section>
+
+
+    <section class="content">
+        <h2>DT Data Preparation & Code</h2>
+        <h3>2️⃣ Global PCOS Dataset Preparation</h3>
+    
+        <h3>1️⃣ Cleaned Dataset (Global PCOS)</h3>
+        <p>
+            The Global PCOS Dataset contains a broader and more complex set of features including demographic, socio-economic, and health indicators. To prepare this for Decision Tree modeling, we performed the following preprocessing:
+        </p>
+        <ul>
+            <li>Handled missing values using <code>median</code> (for numerical) and <code>mode</code> (for categorical) strategies.</li>
+            <li>Converted categorical features into numerical format using <code>LabelEncoder</code> or <code>OneHotEncoding</code> where appropriate.</li>
+            <li>Normalized numerical features with <code>StandardScaler</code> for more effective model splits.</li>
+        </ul>
+        <p>Here is a preview of the cleaned Global PCOS dataset:</p>
+        <div class="image-container">
+            <img src="../assests/DT_global_Clean.png" alt="Cleaned Global PCOS Dataset for DT" class="decision-image">
+        </div>
+    
+        <h3>2️⃣ Sample Train and Test Data</h3>
+        <p>
+            After cleaning, the dataset was divided into <strong>80% training</strong> and <strong>20% testing</strong> using scikit-learn’s <code>train_test_split</code> method.
+            This ensures disjoint datasets and an unbiased evaluation of model performance.
+        </p>
+        <div class="image-container">
+            <img src="../assests/DT_global_train.png" alt="DT Global Train Data Sample" class="decision-image">
+            <img src="../assests/DT_global_test.png" alt="DT Global Test Data Sample" class="decision-image">
+        </div>
+    
+        <p>
+            The shape of the training and testing datasets is confirmed below:
+        </p>
+        <div class="image-container">
+            <img src="../assests/DT_global_split.png" alt="Train/Test Split Shape for Global DT" class="decision-image">
+        </div>
+    </section>
+
+    <section class="content">
+        <h3>🌍 Global Dataset – Decision Tree Results</h3>
+    
+        <p>
+            After cleaning and preparing the <strong>Global PCOS Dataset</strong>, we applied a Decision Tree Classifier with a controlled depth 
+            to avoid overfitting. This model aimed to uncover the most significant features influencing PCOS prediction across diverse demographics and symptoms.
+        </p>
+    
+        <div class="image-container">
+            <img src="../assests/DT_global.png" alt="Global Decision Tree" class="decision-image">
+        </div>
+    
+        <p>
+            🔍 <strong>Tree Interpretation:</strong><br>
+            - The most important feature chosen by the algorithm was <code>Undiagnosed PCOS Likelihood</code>, which appeared consistently near the top of the tree.<br>
+            - Branches are formed by splitting at specific threshold values of this likelihood score, separating samples based on their risk level.<br>
+            - The leaf nodes indicate the majority class at the end of each decision path — either “No PCOS” or “PCOS”.
+        </p>
+    
+        <p>
+            The tree reveals clear patterns in how likelihood scores contribute to decision-making. Despite being simple, this model captures a strong signal from that one variable, but its simplicity limits the model’s ability to fully capture complex, non-linear relationships in the dataset.
+        </p>
+    
+        <h4>📊 Confusion Matrix</h4>
+        <div class="image-container">
+            <img src="../assests/DT_confusion.png" alt="Decision Tree Confusion Matrix - Global Dataset" class="decision-image">
+        </div>
+    
+        <p>
+            <strong>Interpretation:</strong><br>
+            - <strong>True Negatives (TN):</strong> 18,886 cases were correctly identified as not having PCOS.<br>
+            - <strong>True Positives (TP):</strong> 280 actual PCOS cases were correctly predicted.<br>
+            - <strong>False Negatives (FN):</strong> 2,263 PCOS cases were missed and classified as non-PCOS.<br>
+            - <strong>False Positives (FP):</strong> 2,571 non-PCOS cases were incorrectly classified as having PCOS.
+        </p>
+    
+        <p>
+            ✅ <strong>Model Accuracy:</strong> The overall accuracy was moderate. While the model performs well in detecting non-PCOS cases, it struggles to identify PCOS-positive individuals — likely due to class imbalance and the simplicity of the tree.
+        </p>
+    
+        <p>
+            🔍 <strong>Insight:</strong> Decision Trees offer transparency and interpretability. However, in high-dimensional or imbalanced datasets like this, more sophisticated models or feature engineering may be necessary to improve sensitivity (recall) for PCOS cases.
+        </p>
+    </section>
+    <section class="content">
+        <h3>4️⃣ Decision Trees with Different Root Nodes (Global Dataset)</h3>
+    
+        <p>
+            Similar to the Core dataset, we explored the impact of changing root nodes in the Decision Tree model trained on the <strong>Global PCOS Dataset</strong>.
+            Feature importance scores were extracted from the baseline tree, and three custom trees were created with the top features as root nodes.
+        </p>
+    
+        <p>
+            🔍 <strong>Top 3 Features by Importance:</strong>
+        </p>
+        <ul>
+            <li><strong>Undiagnosed_PCOS_Likelihood</strong>: 0.7267</li>
+            <li><strong>Age</strong>: 0.1505</li>
+            <li><strong>BMI</strong>: 0.0628</li>
+        </ul>
+    
+        <p>
+            Below are the tree visualizations and corresponding confusion matrices:
+        </p>
+    
+        <div class="image-container">
+            <div>
+                <h4>Root Node: <code>Undiagnosed_PCOS_Likelihood</code></h4>
+                <img src="../assests/DT_global_undiag.png" alt="Tree with Undiagnosed_PCOS_Likelihood as root" class="decision-image">
+                <img src="../assests/confusion_global_undiag.png" alt="Confusion Matrix - Undiagnosed Root" class="decision-image">
+                <p><em>Explanation:</em> With this highly informative feature at the root, the tree made clearer early splits. Despite this, the model still misclassified all PCOS cases. While accuracy remained at 89%, the recall for PCOS was 0%, revealing the model’s strong bias toward the dominant class.</p>
+            </div>
+    
+            <div>
+                <h4>Root Node: <code>BMI</code></h4>
+                <img src="../assests/DT_global_bmi.png" alt="Tree with BMI as root" class="decision-image">
+                <img src="../assests/confusion_global_BMI.png" alt="Confusion Matrix - BMI Root" class="decision-image">
+                <p><em>Explanation:</em> Using BMI as the root didn't change performance much. The tree remained biased toward predicting "No PCOS". Even with BMI's known relevance to PCOS, it couldn't sufficiently distinguish PCOS cases in this dataset.</p>
+            </div>
+    
+            <div>
+                <h4>Root Node: <code>Age</code></h4>
+                <img src="../assests/DT_global_age.png" alt="Tree with Age as root" class="decision-image">
+                <img src="../assests/confusion_global_age.png" alt="Confusion Matrix - Age Root" class="decision-image">
+                <p><em>Explanation:</em> Age produced similar splits to BMI and resulted in identical performance. Though age influences PCOS onset, it alone cannot serve as a strong classifier.</p>
+            </div>
+        </div>
+    
+    </section>
+        
+    <section class="content">
+        <h3>5️⃣ What Did We Learn? (Global Dataset)</h3>
+    
+        <p>
+            Analyzing the Decision Tree results on the <strong>Global PCOS Dataset</strong> provided the following key insights:
+        </p>
+    
+        <ul>
+            <li>
+                <strong>High Overall Accuracy:</strong> All tree configurations (with different root nodes) achieved an accuracy of <strong>89%</strong>. This initially seemed promising.
+            </li>
+    
+            <li>
+                <strong>Severe Class Imbalance Effects:</strong> Despite the high accuracy, the model failed to correctly predict any <strong>PCOS-positive</strong> cases. This is evident from the <strong>0% recall</strong> for the PCOS class across all confusion matrices.
+            </li>
+    
+            <li>
+                <strong>Root Node Variation Had Minimal Effect:</strong> Whether we used <code>Undiagnosed_PCOS_Likelihood</code>, <code>BMI</code>, or <code>Age</code> as the root node, the decision tree’s performance remained largely unchanged.
+            </li>
+    
+            <li>
+                <strong>Visual Explainability:</strong> Decision Trees still provided valuable interpretability — showing how demographic and health features interact — even when predictive performance was lacking.
+            </li>
+        </ul>
+    
+        <p>
+            ⚠️ <strong>Key Takeaway:</strong> While Decision Trees offer transparent classification rules, their performance on the Global PCOS dataset was hindered by skewed class distribution and overlapping feature distributions. More robust models or rebalancing strategies may be necessary for meaningful PCOS prediction at scale.
+        </p>
+    </section>
+    
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>

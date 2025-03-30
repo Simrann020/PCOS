@@ -1,0 +1,300 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naïve Bayes</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Naïve Bayes Model</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="naive_bayes.html" class="active">Naïve Bayes</a></li>
+                <li><a href="decision_tree.html">Decision Tree</a></li>
+                <li><a href="regression.html">Regression</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content Section -->
+    <section class="content">
+        <h2>Overview of Naïve Bayes</h2>
+        <p>
+            Naïve Bayes (NB) is a straightforward yet powerful machine learning algorithm that applies Bayes' Theorem with a strong assumption: all features in the dataset are independent of each other. Despite this "naïve" assumption, NB models often perform remarkably well, particularly for tasks like spam filtering, document classification, and medical diagnoses. By estimating the likelihood of each class given the feature values, NB provides a probabilistic framework for classification that is both computationally efficient and interpretable.
+        </p>
+    
+        <h2>Multinomial Naïve Bayes Algorithm</h2>
+        <p>
+            The Multinomial Naïve Bayes algorithm is especially well-suited for problems where data is represented as counts or frequencies—such as text classification. In this approach, the algorithm calculates the likelihood of observing a given word or feature in a particular class, relying on the multinomial distribution. It uses the frequencies of words or events to build a model that predicts the most probable class for new instances. This makes Multinomial NB a standard choice for natural language processing tasks, where documents are typically represented as bag-of-words feature vectors.
+        </p>
+    
+        <h2>Why Smoothing is Required</h2>
+        <p>
+            Smoothing is a critical step in training a Naïve Bayes model. Without smoothing, a word or feature that never appears in the training data for a specific class would result in a zero probability for that class. This can cause the model to fail entirely when encountering previously unseen features. By applying techniques like Laplace smoothing, we add a small value (e.g., +1) to all feature counts, ensuring that every possible feature has a non-zero probability. This not only prevents the model from assigning a probability of zero to certain classes but also improves its generalization and stability on unseen data.
+        </p>
+    
+        <h2>Bernoulli Naïve Bayes</h2>
+        <p>
+            Bernoulli Naïve Bayes is another variant of the Naïve Bayes family, designed specifically for binary data. Instead of counting occurrences, it focuses on whether a feature is present (1) or absent (0). This binary approach is particularly effective when the data can be reduced to binary indicators, such as whether certain keywords appear in an email. The model computes the probability of a document belonging to a class based on the presence or absence of features, using a Bernoulli distribution. By leveraging this distribution, Bernoulli NB provides a flexible and interpretable way to classify binary datasets.
+        </p>
+    
+        <h2>Visualizing Naïve Bayes</h2>
+        <p>
+            Below are images that help illustrate the Naïve Bayes approach, highlighting both the Multinomial and Bernoulli variants, and demonstrating the importance of smoothing:
+        </p>
+        <div class="images">
+            <img src="../assests/naive_bayes1.png" alt="Overview of Naïve Bayes" class="model-image">
+            <!-- <img src="assets/multinomial_nb_example.png" alt="Multinomial Naïve Bayes Example" class="model-image"> -->
+            <!-- <img src="assets/bernoulli_nb_example.png" alt="Bernoulli Naïve Bayes Example" class="model-image"> -->
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>📊 Access Full Naïve Bayes Code on GitHub</h2>
+        <p>The complete Naïve Bayes modeling workflow — including data cleaning, splitting, implementation of Gaussian, Multinomial, and Bernoulli NB variants, and result analysis — is available on GitHub.</p>
+        <a href="https://github.com/Simrann020/PCOS/blob/main/Model/Naive_Bayes.ipynb" target="_blank" class="github-button">View Naïve Bayes Code on GitHub</a>
+    </section>
+    
+
+    <!-- Naïve Bayes Data Preparation and Code -->
+<section class="content">
+    <h2>Naïve BayesData Preparation & Code</h2>
+    <h3>1️⃣ Core PCOS Dataset Preparation</h2>
+    <p>
+        For the Naïve Bayes implementation, we worked with the <strong>Core PCOS Dataset</strong>. The process began by cleaning and preprocessing the data before splitting it into training and testing sets.
+    </p>
+
+    <h3>1️⃣ Cleaned Dataset</h3>
+    <p>
+        The initial step was to clean the dataset:
+    </p>
+    <ul>
+        <li>Removed any unnecessary whitespace from column names.</li>
+        <li>Selected relevant features: <strong>Age (yrs)</strong>, <strong>BMI</strong>, <strong>hair growth</strong>, <strong>Hair loss</strong>, <strong>Pimples</strong>, and the target <strong>PCOS (Y/N)</strong>.</li>
+        <li>Converted categorical Y/N columns to binary values (1/0).</li>
+    </ul>
+    <p>
+        Here's the cleaned data preview before model training:
+    </p>
+    <div class="image-container-Naive">
+        <img src="../assests/naive-bayes-cleaning.png" alt="Cleaned Core PCOS Dataset" class="pcos-image">
+    </div>
+
+    <h3>2️⃣ Sample Train and Test Data</h3>
+<p>
+    After cleaning, the data was split into <strong>80% training</strong> and <strong>20% testing</strong> sets using scikit-learn's <code>train_test_split</code>. This allowed us to evaluate the model’s performance on unseen data.
+</p>
+<div class="image-container-Naive">
+    <img src="../assests/NB-training.png" alt="Sample Train Data" class="pcos-image">
+    <img src="../assests/NB-testing.png" alt="Sample Test Data" class="pcos-image">
+</div>
+<p>The following output confirms the shape of the train and test datasets:</p>
+<div class="image-container-Naive">
+    <img src="../assests/NB-division.png" alt="Training and Testing Set Shape Output" class="pcos-image">
+</div>
+
+</section>
+
+
+
+<!-- Naïve Bayes Results and Conclusions -->
+<section class="content">
+    <h2>📈 Naïve Bayes Results and Conclusions</h2>
+
+    <h3>1️⃣ Accuracy Scores</h3>
+    <p>
+        After training and testing the Naïve Bayes models, we evaluated their performance using accuracy scores:
+    </p>
+    <ul>
+        <li><strong>Multinomial Naïve Bayes:</strong> 74%</li>
+        <li><strong>Bernoulli Naïve Bayes:</strong> 75%</li>
+        <li><strong>Gaussian Naïve Bayes:</strong> 71%</li>
+    </ul>
+    <p>
+        The <strong>Bernoulli Naïve Bayes</strong> model performed slightly better than the others, likely due to the binary nature of several symptom-based features (e.g., hair loss, pimples).
+    </p>
+    <h3>2️⃣ Confusion Matrices</h3>
+    <p>
+        The confusion matrices below illustrate how each Naïve Bayes variant performed in classifying PCOS vs non-PCOS cases.
+        These matrices show <strong>True Positives (TP)</strong>, <strong>False Positives (FP)</strong>, <strong>True Negatives (TN)</strong>, and <strong>False Negatives (FN)</strong>.
+    </p>
+    
+    <div class="image-container-Naive">
+        <div>
+            <h4>Multinomial NB</h4>
+            <img src="../assests/Multi_NB.png" alt="Multinomial NB Confusion Matrix" class="pcos-image">
+            <p>
+                <strong>Confusion Matrix:</strong><br>
+                
+                <em>Explanation:</em> The model correctly predicted 139 non-PCOS and 22 PCOS cases. However, it misclassified 47 PCOS patients as non-PCOS, indicating relatively high false negatives.
+            </p>
+        </div>
+    
+        <div>
+            <h4>Bernoulli NB</h4>
+            <img src="../assests/Ber_NB.png" alt="Bernoulli NB Confusion Matrix" class="pcos-image">
+            <p>
+                <strong>Confusion Matrix:</strong><br>
+                <em>Explanation:</em> Very similar to the Multinomial model, but slightly better performance. It has one fewer false positive, correctly identifying one more non-PCOS case.
+            </p>
+        </div>
+    
+        <div>
+            <h4>Gaussian NB</h4>
+            <img src="../assests/Gau_NB.png" alt="Gaussian NB Confusion Matrix" class="pcos-image">
+            <p>
+                <strong>Confusion Matrix:</strong><br>
+                <em>Explanation:</em> Gaussian NB correctly identified more PCOS cases (27) compared to the others, but at the cost of higher false positives (21). This model shows a better balance between sensitivity and specificity.
+            </p>
+        </div>
+    </div>
+    
+
+
+    <h3>3️⃣ What Did We Learn?</h3>
+    <p>
+        Based on the results from all three Naïve Bayes variants, here’s a comparative summary of their performance:
+    </p>
+    
+    <ul>
+        <li><strong>Multinomial Naïve Bayes:</strong> Delivered decent accuracy (74%) but had a high number of false negatives (47). This model works best with count-based/discrete data, but PCOS symptoms may not fully align with that assumption.</li>
+    
+        <li><strong>Bernoulli Naïve Bayes:</strong> Achieved the highest accuracy (75%) and the fewest false positives. It was slightly better than Multinomial NB, likely because most of the input features (e.g., symptoms) are binary — a perfect match for this model type.</li>
+    
+        <li><strong>Gaussian Naïve Bayes:</strong> Although its accuracy (71%) was slightly lower, it correctly identified more PCOS cases (higher true positives). However, it had more false positives. This model assumes continuous, normally-distributed features, which may explain its different behavior.</li>
+    </ul>
+    
+    <p>
+        🔍 <strong>Key Takeaway:</strong> <em>Bernoulli NB performed best overall</em> on this PCOS dataset due to its compatibility with binary symptom features. However, <em>Gaussian NB showed better sensitivity</em> (true positive rate), which could be valuable when minimizing missed diagnoses is a priority.
+    </p>
+    
+</section>
+
+
+
+<section class="content">
+    <h3>2️⃣ Global PCOS Dataset Preparation</h3>
+    <p>
+        We also applied the Naïve Bayes models to the <strong>Global PCOS Dataset</strong>, which includes diverse demographic and socio-economic features such as <em>Age, Ethnicity, Region, Family History</em>, and <em>Access to Healthcare</em>.
+    </p>
+
+    <h3>1️⃣ Cleaned Dataset</h3>
+    <p>
+        The dataset required more extensive preprocessing due to a mix of categorical and continuous values:
+    </p>
+    <ul>
+        <li>Missing values were handled using median (for numerical) and mode (for categorical) strategies.</li>
+        <li>Label encoding was used for non-binary categorical columns.</li>
+        <li>StandardScaler was applied to numerical features to prepare for Gaussian NB.</li>
+    </ul>
+    <p>Here’s a preview of the cleaned data:</p>
+    <div class="image-container-Naive">
+        <img src="../assests/NB_global_clean.png" alt="Cleaned Global PCOS Dataset" class="pcos-image">
+    </div>
+
+    <h3>2️⃣ Sample Train and Test Data</h3>
+    <p>
+        The cleaned dataset was split using <code>train_test_split</code> into <strong>80% training</strong> and <strong>20% testing</strong> subsets for model evaluation.
+    </p>
+    <div class="image-container-Naive">
+        <img src="../assests/NB_global_train.png" alt="Global Train Data" class="pcos-image">
+        <img src="../assests/NB_global_testiing.png" alt="Global Test Data" class="pcos-image">
+    </div>
+    <p>The shape of the train-test split is shown below:</p>
+    <div class="image-container-Naive">
+        <img src="../assests/NB_global_divsion.png" alt="Global Data Split Shape" class="pcos-image">
+    </div>
+</section>
+
+<!-- Naïve Bayes Results and Conclusions - Global -->
+<section class="content">
+    <h2>📈 Global Dataset - Naïve Bayes Results and Conclusions</h2>
+
+    <h3>1️⃣ Accuracy Scores</h3>
+    <p>
+        Below are the accuracy scores obtained when applying the three Naïve Bayes models to the Global dataset:
+    </p>
+    <ul>
+        <li><strong>Multinomial Naïve Bayes:</strong> 66%</li>
+        <li><strong>Bernoulli Naïve Bayes:</strong> 64%</li>
+        <li><strong>Gaussian Naïve Bayes:</strong> <strong>71%</strong></li>
+    </ul>
+    <p>
+        Gaussian Naïve Bayes performed the best, likely due to the continuous nature of several demographic features like age and socio-economic scores.
+    </p>
+
+    <h3>2️⃣ Confusion Matrices</h3>
+    <p>
+        Here are the confusion matrices that show classification performance on the Global PCOS Dataset:
+    </p>
+    <div class="image-container-Naive">
+        <div>
+            <h4>Multinomial NB</h4>
+            <img src="../assests/Multi_Global_NB.png" alt="Multinomial NB Global" class="pcos-image">
+            <p>
+                <em>Explanation:</em> The model correctly predicted 13,031 non-PCOS and 8,367 PCOS cases, but it also misclassified 13,214 PCOS and 8,350 non-PCOS individuals. The overall accuracy was 50%, suggesting the model is barely better than random guessing. It struggled due to the mixed feature types in the dataset, as it expects purely count-based inputs.
+            </p>
+        </div>
+    
+        <div>
+            <h4>Bernoulli NB</h4>
+            <img src="../assests/Ber_Global_NB.png" alt="Bernoulli NB Global" class="pcos-image">
+            <p>
+                <em>Explanation:</em> Bernoulli NB predicted most inputs as "non-PCOS" leading to a highly imbalanced result. Although it achieved 20,291 correct non-PCOS predictions, it failed to identify PCOS in most cases (20,423 false negatives), yielding only 50% accuracy. This shows that the model is not suitable when the dataset includes non-binary and non-sparse features.
+            </p>
+        </div>
+    
+        <div>
+            <h4>Gaussian NB</h4>
+            <img src="../assests/Gau_Global_NB.png" alt="Gaussian NB Global" class="pcos-image">
+            <p>
+                <em>Explanation:</em> Gaussian NB achieved the highest accuracy (51%) among the three. It correctly identified 12,091 PCOS cases — better than the other variants. However, it also had high false positives (11,658). Still, its performance suggests it is better suited for the Global dataset due to its continuous demographic features that align well with Gaussian assumptions.
+            </p>
+        </div>
+    </div>
+    
+
+    <h3>3️⃣ What Did We Learn?</h3>
+<p>
+    Comparing the performance of the three Naïve Bayes models on the Global PCOS Dataset reveals the following insights:
+</p>
+
+<ul>
+    <li>
+        <strong>Multinomial Naïve Bayes:</strong> The model struggled with the dataset’s continuous and encoded demographic features. It delivered an accuracy of only 50%, misclassifying a large portion of both PCOS and non-PCOS cases. This highlights that Multinomial NB is not suitable for datasets that aren’t count- or frequency-based.
+    </li>
+
+    <li>
+        <strong>Bernoulli Naïve Bayes:</strong> Also performed poorly with 50% accuracy. It predicted nearly all values as one class (non-PCOS), resulting in a high number of false negatives. Its binary logic is a poor fit for continuous and multi-level categorical features.
+    </li>
+
+    <li>
+        <strong>Gaussian Naïve Bayes:</strong> Performed slightly better with 51% accuracy. While still far from ideal, it showed a better balance between sensitivity and specificity, identifying more true PCOS cases than the other two. It’s the most appropriate among the three due to its ability to model continuous-valued features effectively.
+    </li>
+</ul>
+
+<p>
+    🔍 <strong>Key Takeaway:</strong> <em>Gaussian NB showed relatively better performance</em> on the Global PCOS dataset due to its compatibility with continuous, normally-distributed demographic data. However, all three models struggled with accuracy, indicating a need for more sophisticated or better-suited algorithms for this dataset.
+</p>
+
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>

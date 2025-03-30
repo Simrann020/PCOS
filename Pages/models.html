@@ -22,11 +22,11 @@
         </nav>
     </header>
 
-    <!-- Models Section -->
+    <!-- Unsupervised Models Section -->
     <section class="content">
         <h2>Explore PCOS Prediction Models</h2>
-        <p>We apply various machine learning techniques to analyze and predict PCOS. Choose a model to explore:</p>
-        
+       
+        <h3>Unsupervised Models</h3>
         <div class="models-grid">
             <div class="model-card">
                 <h3>Principal Component Analysis (PCA)</h3>
@@ -42,6 +42,39 @@
                 <h3>Association Rule Mining (ARM)</h3>
                 <p>Discover hidden relationships in PCOS data using Apriori Algorithm.</p>
                 <a href="arm.html" class="model-btn">Explore ARM</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Train-Test Split Info Section -->
+<section class="content">
+    <h3>Train-Test Split Explanation</h3>
+    <p>
+        A proper train-test split is essential to evaluate model performance on unseen data.
+        Created a dedicated page explaining how the split is defined and used across all algorithms such as Naïve Bayes, Decision Trees, Regression, and more.
+    </p>
+    <a href="train-test.html" class="model-btn">View Train-Test Split Details</a>
+</section>
+
+
+    <!-- Supervised Models Section -->
+    <section class="content">
+        <h3>Supervised Models</h3>
+        <div class="models-grid">
+            <div class="model-card">
+                <h3>Naive Bayes</h3>
+                <p>Probabilistic classification model for predicting PCOS outcomes.</p>
+                <a href="naive_bayes.html" class="model-btn">Explore Naive Bayes</a>
+            </div>
+            <div class="model-card">
+                <h3>Decision Tree</h3>
+                <p>Tree-based method to classify PCOS patients based on various features.</p>
+                <a href="decision_tree.html" class="model-btn">Explore Decision Tree</a>
+            </div>
+            <div class="model-card">
+                <h3>Regression</h3>
+                <p>Regression techniques to predict PCOS risk and related measurements.</p>
+                <a href="regression.html" class="model-btn">Explore Regression</a>
             </div>
         </div>
     </section>

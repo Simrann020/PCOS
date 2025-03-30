@@ -363,7 +363,7 @@ nav ul li a.active {
 }
 
 .pcos-image:hover {
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
 }
 
 /* Research Questions */
@@ -874,7 +874,7 @@ body {
 }
 
 .visualization-card img:hover {
-    transform: scale(1.7);
+   
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -919,7 +919,7 @@ footer {
 }
 
 .model-card:hover {
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
 }
 
 .model-card h3 {
@@ -1091,7 +1091,7 @@ footer {
 }
 
 .pcos-image:hover {
-    transform: scale(1.8);
+    /* transform: scale(1.8); */
 }
 
 
@@ -1254,7 +1254,7 @@ footer {
 }
 
 .clustering-image:hover {
-    transform: scale(1.05);
+    
 }
 
 /* GitHub Button */
@@ -1276,4 +1276,104 @@ footer {
     background-color: #ff4f78;
     transform: translateY(-3px);
     box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Naives Bayes */
+/* Wrapper for confusion matrix cards */
+.image-container-Naive {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Card styling to match model-card look */
+.image-container-Naive > div {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 500px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Optional: subtle hover effect */
+.image-container-Naive > div:hover {
+    transform: scale(1.02);
+}
+
+/* Image styling like PCA thumbnails */
+.pcos-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 12px;
+}
+
+/* Titles like model-card h3 */
+.image-container-Naive h4 {
+    font-size: 20px;
+    color: #4a154b;
+    margin-bottom: 10px;
+}
+
+/* Explanation block inside cards */
+.image-container-Naive p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    text-align: left;
+    border-left: 4px solid #ff7695;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    color: #4a154b;
+    font-size: 16px;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.05);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 50px;
+}
+
+/* General image styling for train-test split images */
+.split-image {
+    width: 100%;
+    max-width: 500px; /* increased from 320px to 500px */
+    height: auto;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/* Container to layout each model's split images side by side (wraps on small screens) */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px; /* slightly increased gap for larger images */
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 12px;
+}
+
+/* Headings inside image blocks */
+.image-container h4 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem; /* slightly increased font size */
+    color: #4a154b;
+    margin-bottom: 15px;
 }
