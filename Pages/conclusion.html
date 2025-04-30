@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCOS Project Conclusions</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Conclusions - PCOS Prediction & Analysis</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="conclusion.html" class="active">Conclusions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h2> Key Messages & Final Thoughts</h2>
+
+        <p>
+            Polycystic Ovary Syndrome (PCOS) is not just a health conditionit’s a personal and emotional journey that many women face every day. Through this project, we aimed to explore data in a way that could bring more awareness and clarity to this commonly misunderstood condition. By understanding the patterns and symptoms, we hope this project can serve as a small step toward better support and diagnosis.
+        </p>
+
+        <p>
+            Every individual’s experience with PCOS is unique. Some may experience visible symptoms like skin issues or weight changes, while others may not notice anything until they face challenges with fertility or mental health. This wide range of experiences often leads to delayed diagnosis and frustration. Our work emphasizes the importance of looking at PCOS from multiple perspectives physical, emotional, and lifestyle.
+        </p>
+
+        <p>
+            One important lesson from our exploration is that no single symptom can confirm or deny the presence of PCOS. Instead, it’s the combination of many subtle signs that tells a fuller story. By analyzing data from real individuals, we were able to identify patterns that are often missed in routine medical checks. This kind of insight can help people ask the right questions and seek timely help.
+        </p>
+
+        <p>
+            Another big takeaway is the importance of early awareness. When symptoms are recognized and monitored earlier, it becomes much easier to manage the condition through lifestyle, support, and medical guidance. It’s not about labeling someone it’s about empowering them with knowledge. With better access to education and tools, more women can understand their own health and take action earlier.
+        </p>
+
+        <p>
+            In the end, this project is a reminder that behind every data point is a real person. Our goal wasn't just to analyze numbers, but to help bring compassion and clarity to a condition that deserves more attention. We hope this journey inspires more conversation, awareness, and care around PCOS—not just in clinics, but in everyday life.
+        </p>
+      </section>
+
+      <section class="content">
+        <p>
+          This project set out to explore how machine learning techniques could assist in the early identification and understanding of Polycystic Ovary Syndrome (PCOS). Starting with real clinical datasets, we cleaned, prepared, and analyzed information such as Age, BMI, hair growth, and other clinical symptoms. Both supervised and unsupervised models were tested, helping us uncover hidden patterns and make accurate predictions that can ultimately benefit healthcare professionals and patients.
+        </p>
+      
+        <p>
+          Among all the supervised learning models we used, <strong>Logistic Regression</strong> proved to be the most effective. It achieved the highest prediction accuracy of <strong>76%</strong>, outperforming Decision Trees, Support Vector Machines (SVMs), Naïve Bayes, and even Ensemble methods like Random Forest. Logistic Regression worked particularly well because it captured the relationship between features in a simple, interpretable, and reliable way  making it ideal for sensitive healthcare applications where understanding model decisions is crucial.
+        </p>
+      
+        <p>
+          On the unsupervised learning side, <strong>DBSCAN (Density-Based Spatial Clustering)</strong> stood out as the best approach. Unlike traditional clustering methods that assume all data fits neatly into groups, DBSCAN recognized the natural spread of the data, identified dense clusters, and effectively marked outliers  an important advantage when dealing with real-world, messy medical data like PCOS cases.
+        </p>
+      
+        <p>
+          While other models like Decision Trees, Random Forests, SVMs, KMeans Clustering, and Naïve Bayes performed reasonably well, they either required heavier tuning, assumed too much about the data, or introduced more complexity than needed. In contrast, Logistic Regression remained consistently strong for predictions, and DBSCAN revealed the natural structure of the data without any assumptions  making both models the most reliable and insightful.
+        </p>
+      
+        <p>
+          In conclusion, this project highlights how thoughtfully applied machine learning methods can make a real difference in understanding complex health conditions. By using simple yet powerful models like Logistic Regression and DBSCAN, we can uncover trends, predict risks, and support better healthcare decisions. These findings open the door to future research where machine learning could help diagnose PCOS earlier, with more personalized and precise treatments.
+        </p>
+      
+        <div class="image-container-conclusion">
+          <img src="../assests/LR_Confusion.png" alt="Logistic Regression Performance" class="conclusion-image">
+          <img src="../assests/DBSCAN_2d.png" alt="DBSCAN Clustering Visualization" class="conclusion-image">
+        </div>
+      </section>
+      
+      
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>

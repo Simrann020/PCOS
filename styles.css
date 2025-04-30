@@ -1377,3 +1377,27 @@ footer {
     color: #4a154b;
     margin-bottom: 15px;
 }
+
+
+/* svm */
+.svm-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 50px; /* More space between */
+    margin-top: 30px;
+    margin-bottom: 50px;
+    justify-items: center;
+    align-items: center;
+}
+
+.svm-grid-item {
+    text-align: center;
+}
+
+.svm-boundary-image {
+    width: 100%;
+    max-width: 600px; /* Previously 320px → now 600px */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}

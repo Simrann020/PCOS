@@ -17,9 +17,7 @@
                 <li><a href="introduction.html">Introduction</a></li>
                 <li><a href="eda.html">PCOS Data</a></li>
                 <li><a href="models.html">Prediction Models</a></li>
-               
                 <li><a href="train_test_split.html" class="active">Train-Test Split</a></li>
-                <li><a href="results.html">Results</a></li>
                 <li><a href="conclusion.html">Conclusions</a></li>
             </ul>
         </nav>
@@ -150,6 +148,40 @@
                     <figcaption>Train-test shape for Global dataset: 96,000 training and 24,000 testing samples.</figcaption>
                 </figure>
             </div>
+
+
+            <div>
+                <h4>Support Vector Machine (SVM) – Core PCOS Dataset</h4>
+                <figure>
+                    <img src="../assests/SVM_Xtrain.png" alt="SVM Training Data Sample" class="split-image">
+                    <figcaption>Training dataset for SVM using cleaned numeric features (Core PCOS).</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/SVM_Xtest.png" alt="SVM Testing Data Sample" class="split-image">
+                    <figcaption>Testing dataset for SVM model, ensuring fully numeric labeled data.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/SVM_Shape.png" alt="SVM Split Shape" class="split-image">
+                    <figcaption>Split confirmation: 865 samples for training and 217 samples for testing.</figcaption>
+                </figure>
+            </div>
+            
+            <div>
+                <h4>Ensemble (Random Forest) – Core PCOS Dataset</h4>
+                <figure>
+                    <img src="../assests/ensemble_train.png" alt="Ensemble Train Data" class="split-image">
+                    <figcaption>Training dataset prepared for Random Forest modeling using important PCOS features.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/ensemble_test.png" alt="Ensemble Test Data" class="split-image">
+                    <figcaption>Testing dataset containing unseen examples for Random Forest evaluation.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../assests/ensemble_shape.png" alt="Ensemble Train-Test Split Shape" class="split-image">
+                    <figcaption>Split summary: 865 entries for training and 217 for testing (Core PCOS dataset).</figcaption>
+                </figure>
+            </div>
+            
         
         </div>
         

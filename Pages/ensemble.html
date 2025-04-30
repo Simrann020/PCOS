@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensemble Learning - PCOS Prediction</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Ensemble Learning for PCOS Prediction</h1>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="eda.html">PCOS Data</a></li>
+                <li><a href="models.html">Prediction Models</a></li>
+                <li><a href="svm.html">SVM</a></li>
+                <li><a href="ensemble.html" class="active">Ensemble</a></li>
+                <li><a href="conclusion.html">Conclusions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h2>🔷 What is Ensemble Learning?</h2>
+        
+        <p>
+            Ensemble Learning is a powerful machine learning strategy where multiple individual models (often called "weak learners") are combined together 
+            to create a stronger, more accurate predictive model. Instead of relying on just one model’s predictions, ensemble methods leverage the wisdom of multiple models to improve performance, 
+            reduce overfitting, and enhance generalization to new data.
+        </p>
+        
+        <p>
+            The idea is simple: by aggregating different models, we can minimize the chances of making large errors and build a more robust system overall. 
+            Common ensemble techniques include <strong>Bagging</strong> (e.g., Random Forest), <strong>Boosting</strong> (e.g., AdaBoost, Gradient Boosting), and <strong>Voting Classifiers</strong>.
+        </p>
+    
+        <div class="image-container">
+            <img src="../assests/ensemble.jpg" alt="Ensemble Learning Concept" class="ensemble-image">
+        </div>
+    
+       
+        <h3>🧠 How Ensemble Applies to PCOS Prediction</h3>
+        <p>
+            For this project, Ensemble Learning methods were used to strengthen PCOS prediction models. 
+            By combining multiple models (like Decision Trees, Logistic Regression, and SVM) into Voting Classifiers and experimenting with Random Forests and Boosting techniques, 
+            we enhanced model accuracy and robustness on the PCOS dataset.
+        </p>
+        
+        <p>
+            The ensemble methods helped balance prediction performance across both PCOS-positive and PCOS-negative classes, 
+            overcoming biases that sometimes occur when using a single model alone. This resulted in improved overall model reliability and better handling of diverse patient profiles.
+        </p>
+    
+        <h3>📋 Method Used in This Project</h3>
+<p>
+    For this project, we focused on using the <strong>Random Forest Classifier</strong> as our primary Ensemble Learning method. 
+    Random Forest is based on the Bagging approach, where multiple Decision Trees are trained on different random subsets of the data, 
+    and their predictions are averaged (for regression) or voted (for classification) to produce the final output.
+</p>
+
+<p>
+    This method helped in reducing overfitting compared to a single Decision Tree, improving the overall prediction accuracy on the PCOS dataset. 
+    Random Forest also provided valuable insights into feature importance, helping us identify which clinical features were the most influential in predicting PCOS.
+</p>
+
+    </section>
+
+    <section class="content">
+        <h2>📊 Access Full Ensemble Code on GitHub</h2>
+        <p>
+            You can view the full Ensemble implementation code, including data cleaning, splitting, model training with various kernels, and evaluation, through the link below:
+        </p>
+        <a href="https://github.com/Simrann020/PCOS/blob/main/Model/ensemble.ipynb" target="_blank" class="github-button">View SVM Code on GitHub</a>
+        
+    </section>
+    
+
+    <section class="content">
+        <h2>🌳 Ensemble Learning (Random Forest) - Data Preparation & Code</h2>
+    
+        <h3>1️⃣ Core PCOS Dataset Preparation</h3>
+        <p>
+            For the Ensemble Learning model (specifically Random Forest Classifier), we worked with the <strong>Core PCOS Cleaned Dataset</strong>. 
+            The process involved thorough cleaning and feature selection to ensure that the dataset was numeric and properly labeled, making it ideal for ensemble modeling.
+        </p>
+    
+        <h3>1️⃣ Cleaned Dataset</h3>
+        <p>
+            The preprocessing steps included:
+        </p>
+        <ul>
+            <li>Removing unnecessary whitespace from column names.</li>
+            <li>Selecting key features such as <strong>Age (yrs)</strong>, <strong>BMI</strong>, <strong>hair growth</strong>, <strong>Hair loss</strong>, <strong>Pimples</strong>, and the target <strong>PCOS (Y/N)</strong>.</li>
+            <li>Encoding categorical variables (Y/N) into binary numeric values (0 for No, 1 for Yes).</li>
+        </ul>
+    
+        <p>Below is a snapshot of the dataset before cleaning:</p>
+        <div class="image-container-Naive">
+            <img src="../assests/Merged1.png" alt="Before Cleaning - Core PCOS Dataset for Random Forest" class="pcos-image">
+        </div>
+    
+        <p>Below is a snapshot of the cleaned dataset ready for Random Forest modeling:</p>
+        <div class="image-container-Naive">
+            <img src="../assests/ensemble_clean.png" alt="Cleaned Core PCOS Dataset for Random Forest" class="pcos-image">
+        </div>
+    
+        <h3>2️⃣ Sample Train and Test Data</h3>
+        <p>
+            After cleaning, the data was split into <strong>80% training</strong> and <strong>20% testing</strong> subsets using scikit-learn’s <code>train_test_split</code>. 
+            This disjoint split ensures that the model is trained and evaluated on completely different sets of data, enabling a reliable assessment of performance.
+        </p>
+    
+        <div class="image-container-Naive">
+            <img src="../assests/ensemble_train.png" alt="Random Forest Train Data Sample" class="pcos-image">
+            <img src="../assests/ensemble_test.png" alt="Random Forest Test Data Sample" class="pcos-image">
+        </div>
+    
+        <p>Below is the output that confirms the dimensions of the training and testing datasets:</p>
+        <div class="image-container-Naive">
+            <img src="../assests/ensemble_shape.png" alt="Random Forest Train-Test Split Shape Output" class="pcos-image">
+        </div>
+    
+    </section>
+    
+    <section class="content">
+        <h2>📈 Random Forest Classifier Results</h2>
+    
+        <p>
+            After training the Random Forest model on the Core PCOS dataset, we evaluated its performance using the confusion matrix, classification report, and feature importance plot.
+        </p>
+    
+        <h3>✅ Confusion Matrix</h3>
+        <div class="image-container-ensemble">
+            <img src="../assests/ensemble_confusion.png" alt="Random Forest Confusion Matrix" class="ensemble-image">
+        </div>
+        <p>
+            The confusion matrix shows that the model correctly identified 139 non-PCOS patients and 22 PCOS patients. However, 47 PCOS cases were missed, and 9 non-PCOS cases were incorrectly predicted as PCOS.
+        </p>
+    
+        <h3>📄 Classification Report</h3>
+        <div class="image-container-ensemble">
+            <img src="../assests/ensemble_classification.png" alt="Random Forest Classification Report" class="ensemble-image">
+        </div>
+        <p>
+            The classification report highlights precision and recall values. 
+            The model had high precision for both classes but struggled with recall for PCOS cases, indicating that it tends to miss some true PCOS cases.
+        </p>
+    
+        <h3>🌟 Feature Importance Plot</h3>
+        <div class="image-container-ensemble">
+            <img src="../assests/ensemble_feature.png" alt="Random Forest Feature Importance" class="ensemble-image">
+        </div>
+        <p>
+            This bar chart displays which features were most important in predicting PCOS. Features like <strong>Hair Growth</strong>, <strong>BMI</strong>, and <strong>Age</strong> played major roles in influencing the model’s decisions.
+        </p>
+    
+    
+    </section>
+    
+
+    <section class="content">
+        <h2>🔍 Conclusion: Ensemble Learning with Random Forest</h2>
+    
+        <p>
+            The Random Forest Classifier provided strong and reliable results for predicting PCOS from the Core PCOS Dataset. 
+            With an overall accuracy of <strong>74%</strong>, it demonstrated good generalization capabilities across both training and testing data.
+        </p>
+    
+        <p>
+            The confusion matrix and classification report revealed that the model performed very well in predicting the majority class (non-PCOS), 
+            but had some difficulty correctly identifying all PCOS cases, resulting in moderate false negatives. 
+            This is common in medical datasets where imbalanced classes or overlapping symptoms exist.
+        </p>
+    
+        <p>
+            Feature importance analysis showed that clinical indicators such as <strong>Age</strong>, <strong>BMI</strong>, and <strong>hair growth</strong> played major roles in the model’s decision-making, 
+            providing valuable insights into the key factors associated with PCOS risk.
+        </p>
+    
+        <p>
+            Overall, Random Forest proved to be an effective ensemble method, benefiting from its ability to combine multiple decision trees to improve robustness and reduce overfitting. 
+            Its performance was comparable to simpler models like Decision Trees and SVMs, but with improved stability across different splits.
+        </p>
+    
+        <p>
+            In future iterations, fine-tuning hyperparameters (such as number of trees, depth of trees, and feature sampling) could further boost model accuracy and sensitivity to better capture PCOS-positive cases.
+        </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Simran Jadhav | PCOS Data Science Project</p>
+    </footer>
+
+</body>
+</html>
